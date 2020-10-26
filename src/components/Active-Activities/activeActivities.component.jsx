@@ -1,17 +1,25 @@
 import React from "react";
-import "./activities.styles.scss";
+import "./activeActivities.styles.scss";
 import { connect } from "react-redux";
 import CustomButton from "../Custome-Button/custom-button.component";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {
+  sortActivities,
+  setArchriveActivities,
+} from "../../redux/activities/activities.action";
 
-const ActiveActivities = () => (
-  <DragDropContext onDragEnd={(value) => this.props.sortActivities(value)}>
+const ActiveActivities = ({
+  sortActivities,
+  activitiesActive,
+  setArchriveActivities,
+}) => (
+  <DragDropContext onDragEnd={(value) => sortActivities(value)}>
     <h3>Activities on process</h3>
-    {this.props.activitiesActive !== undefined ? (
+    {activitiesActive !== undefined ? (
       <Droppable droppableId="activities">
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
-            {this.props.activitiesActive.map((ac, index) => {
+            {activitiesActive.map((ac, index) => {
               return (
                 <Draggable key={ac.id} index={index} draggableId={ac.id}>
                   {(provided) => (
@@ -46,9 +54,7 @@ const ActiveActivities = () => (
                             </p>
                           )}
                           <CustomButton
-                            onClick={() =>
-                              this.props.setArchriveActivities(ac.id)
-                            }
+                            onClick={() => setArchriveActivities(ac.id)}
                           >
                             Move to Archive
                           </CustomButton>
@@ -71,4 +77,16 @@ const ActiveActivities = () => (
   </DragDropContext>
 );
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  activitiesActive: state.activities.activitiesActive,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sortActivities: (activities) => dispatch(sortActivities(activities)),
+    setArchriveActivities: (activities) =>
+      dispatch(setArchriveActivities(activities)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveActivities);

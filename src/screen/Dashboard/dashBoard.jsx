@@ -2,21 +2,16 @@ import React from "react";
 import axios from "axios";
 import "./dashBoard.styles.scss";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { API_KEY } from "../../constant";
 import Weather from "../../components/Weather/weather.component";
 import Archrive from "../../components/Archrive/archrive.component";
-import FormInput from "../../components/Form-Input/form-input.component";
 import Suggestions from "../../components/Suggestion/suggestion.component";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Notifications from "../../components/Notifications/notifications.component";
-import CustomButton from "../../components/Custome-Button/custom-button.component";
+import ActiveActivities from "../../components/Active-Activities/activeActivities.component";
 import {
   setDefined,
-  sortActivities,
   setDecrementMinutes,
   sortActiveActivities,
-  setArchriveActivities,
   sortNonActiveActivities,
 } from "../../redux/activities/activities.action";
 import { getWeatherData } from "../../redux/weather/weather.action";
@@ -73,77 +68,7 @@ class DashBoard extends React.Component {
         </h1>
         <div className="container">
           <div className="child-container-1">
-            <DragDropContext
-              onDragEnd={(value) => this.props.sortActivities(value)}
-            >
-              <h3>Activities on process</h3>
-              {this.props.activitiesActive !== undefined ? (
-                <Droppable droppableId="activities">
-                  {(provided) => (
-                    <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {this.props.activitiesActive.map((ac, index) => {
-                        return (
-                          <Draggable
-                            key={ac.id}
-                            index={index}
-                            draggableId={ac.id}
-                          >
-                            {(provided) => (
-                              <div
-                                key={ac.id}
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              >
-                                {!ac.completed ? (
-                                  <div>
-                                    <h4>{ac.name}</h4>
-                                    {ac.timeSet >= 0 ? (
-                                      <p>
-                                        {ac.timeSet}{" "}
-                                        {ac.timeSet === 1 ||
-                                        ac.timeSet === 0 ? (
-                                          <span>minute</span>
-                                        ) : (
-                                          <span>minutes</span>
-                                        )}{" "}
-                                        to go
-                                      </p>
-                                    ) : (
-                                      <p>
-                                        You are {Math.abs(ac.timeSet)}{" "}
-                                        {Math.abs(ac.timeSet) === 1 ? (
-                                          <span>minute</span>
-                                        ) : (
-                                          <span>minutes</span>
-                                        )}{" "}
-                                        late
-                                      </p>
-                                    )}
-                                    <CustomButton
-                                      onClick={() =>
-                                        this.props.setArchriveActivities(ac.id)
-                                      }
-                                    >
-                                      Move to Archive
-                                    </CustomButton>
-                                  </div>
-                                ) : null}
-                              </div>
-                            )}
-                          </Draggable>
-                        );
-                      })}
-                      {provided.placeholder}
-                    </div>
-                  )}
-                </Droppable>
-              ) : (
-                <>
-                  <h1>No more active projects</h1>
-                </>
-              )}
-            </DragDropContext>
+            <ActiveActivities />
           </div>
           <div className="child-container-2">
             <div className="cc-1">
@@ -167,15 +92,11 @@ class DashBoard extends React.Component {
 
 const mapStateToProps = (state) => ({
   activities: state.activities.activities,
-  activitiesActive: state.activities.activitiesActive,
   defaultCity: state.weather.defaultCity,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sortActivities: (activities) => dispatch(sortActivities(activities)),
-    setArchriveActivities: (activities) =>
-      dispatch(setArchriveActivities(activities)),
     setDecrementMinutes: (activities) =>
       dispatch(setDecrementMinutes(activities)),
     sortActiveActivities: (activities) =>
