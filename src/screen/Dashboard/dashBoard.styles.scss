@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+.child-container-1 {
+  background-color: white;
+  flex: 1.5;
+}
+
+.child-container-2 {
+  background-color: white;
+  flex: 1.5;
+}
+.child-container-3 {
+  background-color: white;
+  flex: 1;
+}
