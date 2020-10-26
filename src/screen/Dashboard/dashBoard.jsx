@@ -22,17 +22,12 @@ import {
 } from "../../redux/weather/weather.action";
 
 class DashBoard extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      notifiedItem: [],
-    };
-  }
-
   componentDidMount() {
     this.getActiveActivities();
     this.getNonActiveActivities();
-    this.decrementMinutes();
+    setInterval(() => {
+      this.props.setDecrementMinutes();
+    }, 60000);
     this.getWeather();
   }
 
@@ -69,41 +64,6 @@ class DashBoard extends React.Component {
   getNonActiveActivities = () => {
     this.props.sortNonActiveActivities();
   };
-
-  decrementMinutes = () => {
-    setInterval(() => {
-      this.props.setDecrementMinutes();
-    }, 60000);
-  };
-
-  // decrementMinutes = () => {
-  //   setInterval(() => {
-  //     const newArr = this.props.activities.map((ac) => {
-  //       return {
-  //         ...ac,
-  //         timeSet: ac.timeSet - 1,
-  //       };
-  //     });
-  //     this.props.setDecrementMinutes(
-  //       this.props.activities.map((ac) => {
-  //         return {
-  //           ...ac,
-  //           timeSet: ac.timeSet - 1,
-  //         };
-  //       })
-  //     );
-  //     let findObj = newArr.find(
-  //       (el) => el.timeSet > -1 && el.completed !== true && el.timeSet < 1
-  //     );
-  //     if (typeof findObj !== "undefined") {
-  //       let findArr = [];
-  //       findArr.push(findObj);
-  //       this.setState({ notifiedItem: findArr });
-  //     }
-
-  //     // this.setState({ activities: newArr });
-  //   }, 5000);
-  // };
 
   render() {
     const wR = Object.keys(this.props.weatherReport);
@@ -196,8 +156,28 @@ class DashBoard extends React.Component {
             </div>
           </DragDropContext>
           <div className="child-container-2">
-            <div className="cc-2">
+            <div className="cc-1">
               <h3>Notifications</h3>
+              {this.props.notifiedItem.length === 0 ? (
+                <p>No notifications at this moment</p>
+              ) : (
+                this.props.notifiedItem.length > -1 &&
+                this.props.notifiedItem.map((notice) => {
+                  if (notice !== undefined) {
+                    return (
+                      <p key={notice.id}>
+                        Your task {notice.name} has started now{" "}
+                      </p>
+                    );
+                  }
+
+                  return notice;
+                })
+              )}
+            </div>
+            <div className="cc-2">
+              <h3>Suggestions</h3>
+              <p>No suggetions yet</p>
             </div>
             <div className="cc-3">
               <h3>Archive</h3>
@@ -256,6 +236,7 @@ const mapStateToProps = (state) => ({
   weatherReport: state.weather.weatherReport,
   weatherStatus: state.weather.weatherStatus,
   basicWeatherData: state.weather.basicWeatherData,
+  notifiedItem: state.activities.notifiedItem,
 });
 
 const mapDispatchToProps = (dispatch) => {

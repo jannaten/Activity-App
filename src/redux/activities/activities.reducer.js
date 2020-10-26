@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 const initState = {
   setName: "",
   timeSet: "",
+  notifiedItem: [],
   activitiesActive: [],
   activitiesNonActive: [],
   activities: [
@@ -35,7 +36,7 @@ const activitiesReducer = (state = initState, action) => {
         if (ac.completed !== true) {
           return {
             ...ac,
-            timeSet: ac.timeSet - 1,
+            timeSet: ac.timeSet,
           };
         }
       });
@@ -76,7 +77,6 @@ const activitiesReducer = (state = initState, action) => {
           activities: [...state.activities, obj],
           setName: "",
           timeSet: "",
-          //activitiesActive: [obj],
         };
       }
       return { ...state };
@@ -103,7 +103,7 @@ const activitiesReducer = (state = initState, action) => {
               id: ac.id,
               name: ac.name,
               completed: true,
-              timeSet: 0,
+              timeSet: NaN,
             };
             return getArchriveItem.push(obj);
           }
@@ -113,7 +113,7 @@ const activitiesReducer = (state = initState, action) => {
                 id: ac.id,
                 name: ac.name,
                 completed: true,
-                timeSet: 0,
+                timeSet: NaN,
               };
               return obj;
             } else {
@@ -142,6 +142,7 @@ const activitiesReducer = (state = initState, action) => {
       return { ...state };
 
     case "SET_DECREAMENT_MINUTES":
+      //Decrement minutes
       let newArr = state.activitiesActive.map((ac) => {
         return {
           ...ac,
@@ -149,9 +150,23 @@ const activitiesReducer = (state = initState, action) => {
         };
       });
       let filteredArr = newArr.filter((ac) => ac !== undefined);
+      let decresedTimeArr = [...newArr, ...state.activitiesNonActive];
+
+      //Notified Item
+
+      let getNotifiedItem = newArr.map((nA) => {
+        if (nA.timeSet <= 0) {
+          return nA;
+        }
+      });
+      let getFilteredNotifiedItem = getNotifiedItem.filter(
+        (ac) => ac !== undefined && ac.completed === false
+      );
       return {
         ...state,
         activitiesActive: filteredArr,
+        activities: decresedTimeArr,
+        notifiedItem: getFilteredNotifiedItem,
       };
 
     case "SET_DEFINED":
