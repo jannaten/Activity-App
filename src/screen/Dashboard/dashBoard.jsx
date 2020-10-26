@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import "./dashBoard.styles.scss";
-import { v4 as uuid } from "uuid";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { API_KEY } from "../../constant";
