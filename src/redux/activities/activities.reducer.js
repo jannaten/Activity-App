@@ -1,6 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 const initState = {
+  setId: "",
+  setCompleted: "",
+  setValidTime: "",
+  showModal: false,
   setName: "",
   timeSet: "",
   notifiedItem: [],
@@ -173,7 +177,17 @@ const activitiesReducer = (state = initState, action) => {
       let nonActiveArr = state.activitiesNonActive;
       return { ...state, activitiesActive: [], activities: nonActiveArr };
 
-    case "EDIT_ACTIVITY":
+    case "TOGGLE_MODAL":
+      console.log(action.payload);
+      return {
+        ...state,
+        setId: action.payload.setId,
+        showModal: action.payload.showModal,
+        setCompleted: action.payload.setCompleted,
+        setValidTime: action.payload.setValidTime,
+      };
+
+    case "UPDATE_ACTIVITY":
       console.log(action.payload);
       return { ...state };
 

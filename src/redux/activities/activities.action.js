@@ -52,3 +52,8 @@ export const toggleModal = (state) => ({
   type: "TOGGLE_MODAL",
   payload: state,
 });
+
+export const handleUpdate = (state) => ({
+  type: "UPDATE_ACTIVITY",
+  payload: state,
+});

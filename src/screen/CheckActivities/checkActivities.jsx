@@ -3,48 +3,16 @@ import { connect } from "react-redux";
 import "./checkActivities.styles.scss";
 import Modal from "../../utils/setModal";
 import { CustomButton, FormInput } from "../../components/";
-import { deleteActivity, editActivity, handleChange } from "../../redux/";
+import {
+  deleteActivity,
+  editActivity,
+  handleChange,
+  toggleModal,
+  handleUpdate,
+} from "../../redux/";
 
 class CheckActivity extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      setId: "",
-      setName: "",
-      timeSet: "",
-      setCompleted: "",
-      setValidTime: "",
-      showModal: false,
-    };
-  }
-
-  handleChange = (e) => {
-    const { value, name } = e.target;
-    this.setState({ [name]: value });
-  };
-
-  toggleModal = (e) => {
-    this.setState({
-      setId: e.id,
-      setCompleted: e.completed,
-      setValidTime: e.setValidTime,
-      showModal: !this.state.showModal,
-    });
-  };
-
-  handleEdit = (e) => {
-    e.preventDefault();
-    let obj = {
-      id: this.state.setId,
-      name: this.state.setName,
-      timeSet: this.state.timeSet,
-      completed: this.state.setCompleted,
-    };
-    console.log(obj);
-  };
-
   render() {
-    console.log(this.state.setValidTime);
     return (
       <div>
         <h2>All activities - total {this.props.activities.length} rows</h2>
@@ -143,18 +111,23 @@ class CheckActivity extends React.Component {
                         border: "1px solid rgba(128,128,128, 0.5)",
                       }}
                       onClick={() =>
-                        this.toggleModal({
-                          id: ac.id,
-                          completed: ac.completed,
+                        this.props.toggleModal({
+                          setId: ac.id,
+                          setCompleted: ac.completed,
                           setValidTime: ac.timeSet,
+                          showModal: !this.props.showModal,
                         })
                       }
                     >
                       <i className="fas fa-pen"></i>
                     </div>
                     <Modal
-                      show={this.state.showModal}
-                      closeCallback={this.toggleModal}
+                      show={this.props.showModal}
+                      closeCallback={() =>
+                        this.props.toggleModal({
+                          showModal: !this.props.showModal,
+                        })
+                      }
                       customClass="custom_modal_class"
                     >
                       <React.Fragment>
@@ -162,16 +135,17 @@ class CheckActivity extends React.Component {
                           <FormInput
                             type="text"
                             name="setName"
-                            value={this.state.setName}
+                            value={this.props.setName}
                             label={`Change activity name`}
-                            handleChange={this.handleChange}
+                            handleChange={this.props.handleChange}
                             required
                           />
-                          {this.state.setValidTime ? (
+                          {this.props.setValidTime ? (
                             <FormInput
                               type="time"
                               name="timeSet"
-                              handleChange={this.handleChange}
+                              value={this.props.timeSet}
+                              handleChange={this.props.handleChange}
                               required
                             />
                           ) : null}
@@ -182,12 +156,25 @@ class CheckActivity extends React.Component {
                             }}
                           >
                             <CustomButton
-                              onClick={this.handleEdit}
+                              onClick={() =>
+                                this.props.handleUpdate({
+                                  id: this.props.setId,
+                                  name: this.props.setName,
+                                  timeSet: this.props.timeSet,
+                                  completed: this.props.setCompleted,
+                                })
+                              }
                               style={{ marginRight: "1rem" }}
                             >
                               Update
                             </CustomButton>
-                            <CustomButton onClick={this.toggleModal}>
+                            <CustomButton
+                              onClick={() =>
+                                this.props.toggleModal({
+                                  showModal: !this.props.showModal,
+                                })
+                              }
+                            >
                               Close
                             </CustomButton>
                           </div>
@@ -243,6 +230,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    toggleModal: (activity) => dispatch(toggleModal(activity)),
+    handleUpdate: (activity) => dispatch(handleUpdate(activity)),
+    handleChange: (activity) => dispatch(handleChange(activity)),
     editActivity: (activity) => dispatch(editActivity(activity)),
     deleteActivity: (activity) => dispatch(deleteActivity(activity)),
   };
