@@ -21,8 +21,9 @@ class DashBoard extends React.Component {
 
   getWeather = async () => {
     try {
+      const { defaultCity } = this.props;
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${this.props.defaultCity}&appid=${API_KEY}`
+        `http://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${API_KEY}`
       );
       const mainTemp = response.data.main;
       const weatherStatus = response.data.weather[0];

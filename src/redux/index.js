@@ -3,6 +3,7 @@ export { default as activitiesReducer } from "./activities/activities.reducer";
 export {
   setDefined,
   handleChange,
+  editActivity,
   addActivities,
   sortActivities,
   deleteActivity,
@@ -12,7 +13,7 @@ export {
   sortNonActiveActivities,
 } from "./activities/activities.action";
 export {
-  getWeatherData,
   changeWeather,
+  getWeatherData,
   handleWeatherChange,
 } from "./weather/weather.action";
