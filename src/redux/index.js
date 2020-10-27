@@ -5,6 +5,7 @@ export {
   handleChange,
   addActivities,
   sortActivities,
+  deleteActivity,
   setDecrementMinutes,
   sortActiveActivities,
   setArchriveActivities,

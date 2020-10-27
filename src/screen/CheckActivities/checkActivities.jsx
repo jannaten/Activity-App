@@ -1,6 +1,8 @@
 import React from "react";
 import "./checkActivities.styles.scss";
 import { connect } from "react-redux";
+import { deleteActivity } from "../../redux/";
+
 class CheckActivity extends React.Component {
   constructor() {
     super();
@@ -124,6 +126,7 @@ class CheckActivity extends React.Component {
                         justifyContent: "center",
                         border: "1px solid rgba(128,128,128, 0.5)",
                       }}
+                      onClick={() => this.props.deleteActivity(ac.id)}
                     >
                       <i className="fas fa-trash"></i>
                     </div>
@@ -144,4 +147,8 @@ const mapStateToProps = (state) => ({
   activities: state.activities.activities,
 });
 
-export default connect(mapStateToProps)(CheckActivity);
+const mapDispatchToProps = (dispatch) => {
+  return { deleteActivity: (activity) => dispatch(deleteActivity(activity)) };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckActivity);

@@ -173,6 +173,12 @@ const activitiesReducer = (state = initState, action) => {
       let nonActiveArr = state.activitiesNonActive;
       return { ...state, activitiesActive: [], activities: nonActiveArr };
 
+    case "DELETE_ACTIVITY":
+      const afterDeleteArray = state.activities.filter(
+        (el) => el.id !== action.payload
+      );
+      return { ...state, activities: afterDeleteArray };
+
     default:
       return state;
   }

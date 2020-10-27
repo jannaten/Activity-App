@@ -37,3 +37,8 @@ export const setDefined = (state) => ({
   type: "SET_DEFINED",
   payload: state,
 });
+
+export const deleteActivity = (state) => ({
+  type: "DELETE_ACTIVITY",
+  payload: state,
+});
