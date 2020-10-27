@@ -6,11 +6,11 @@ import { changeWeather, handleWeatherChange } from "../../redux/";
 
 const Weather = ({
   weatherReport,
-  basicWeatherData,
   weatherStatus,
-  handleWeatherChange,
   givenCityName,
   changeWeather,
+  basicWeatherData,
+  handleWeatherChange,
 }) => {
   const wR = Object.keys(weatherReport);
   const {

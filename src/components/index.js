@@ -6,3 +6,4 @@ export { default as Suggestions } from "./Suggestion/suggestion.component";
 export { default as CustomButton } from "./Custom-Button/custom-button.component";
 export { default as Notifications } from "./Notifications/notifications.component";
 export { default as ActiveActivities } from "./Active-Activities/activeActivities.component";
+export { default as EditActivityModal } from "./Edit-Activity-Modal/editActivityModal.component";

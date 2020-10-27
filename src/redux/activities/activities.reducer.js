@@ -66,22 +66,21 @@ const activitiesReducer = (state = initState, action) => {
         getWindowTime.getHours() * 60 + getWindowTime.getMinutes();
       let setTime =
         Number(timeSet.split(":")[0]) * 60 + Number(timeSet.split(":")[1]);
-      if (setTime < totalWindowTime) {
-        alert("Please choose a upcoming time");
-      } else if (setTime > totalWindowTime) {
+      if (setTime > totalWindowTime) {
         let obj = {
           id: uuid(),
           name: setName,
           completed: false,
           timeSet: setTime - totalWindowTime,
         };
-        //this.props.history.push("/");
         return {
           ...state,
           setName: "",
           timeSet: "",
           activities: [...state.activities, obj],
         };
+      } else {
+        alert("Please choose a upcoming time");
       }
       return { ...state };
 
@@ -194,26 +193,38 @@ const activitiesReducer = (state = initState, action) => {
       let setValidTime =
         Number(state.timeSet.split(":")[0]) * 60 +
         Number(state.timeSet.split(":")[1]);
+      console.log(action.payload);
       let getValue = action.payload;
-      let editedArray = state.activities.map((ac) => {
-        if (ac.id === getValue.id && ac.completed === false) {
-          ac.name = getValue.name;
-          ac.completed = getValue.completed;
-          ac.timeSet = setValidTime - windowTime;
-        } else if (ac.id === getValue.id && ac.completed === true) {
-          ac.name = getValue.name;
-          ac.completed = getValue.completed;
-          ac.timeSet = NaN;
-        }
-        return ac;
-      });
-      return {
-        ...state,
-        setName: "",
-        timeSet: "",
-        showModal: false,
-        activities: editedArray,
-      };
+      if (
+        setValidTime > windowTime &&
+        getValue.timeSet !== "" &&
+        getValue.name !== ""
+      ) {
+        let editedArray = state.activities.map((ac) => {
+          if (ac.id === getValue.id && ac.completed === false) {
+            ac.name = getValue.name;
+            ac.completed = getValue.completed;
+            ac.timeSet = setValidTime - windowTime;
+          } else if (ac.id === getValue.id && ac.completed === true) {
+            ac.name = getValue.name;
+            ac.completed = getValue.completed;
+            ac.timeSet = NaN;
+          }
+          return ac;
+        });
+        return {
+          ...state,
+          setId: "",
+          setName: "",
+          timeSet: "",
+          setValidTime: 0,
+          showModal: false,
+          activities: editedArray,
+        };
+      } else {
+        alert("Please choose a upcoming time");
+      }
+      return { ...state };
 
     case "DELETE_ACTIVITY":
       const afterDeleteActivityArray = state.activities.filter(

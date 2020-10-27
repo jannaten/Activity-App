@@ -9,13 +9,12 @@ import { sortActiveActivities, sortNonActiveActivities } from "../../redux/";
 import { setDefined, setDecrementMinutes, getWeatherData } from "../../redux/";
 
 class DashBoard extends React.Component {
-  activityNull = null;
   componentDidMount() {
     this.getActiveActivities();
     this.getNonActiveActivities();
     setInterval(() => {
       this.props.setDecrementMinutes();
-    }, 60000);
+    }, 5000);
     this.getWeather();
   }
 
@@ -85,8 +84,8 @@ class DashBoard extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  activities: state.activities.activities,
   defaultCity: state.weather.defaultCity,
+  activities: state.activities.activities,
 });
 
 const mapDispatchToProps = (dispatch) => {

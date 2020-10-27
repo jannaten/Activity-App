@@ -5,7 +5,6 @@ export {
   toggleModal,
   handleUpdate,
   handleChange,
-  editActivity,
   addActivities,
   sortActivities,
   deleteActivity,

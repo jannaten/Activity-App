@@ -43,11 +43,6 @@ export const deleteActivity = (state) => ({
   payload: state,
 });
 
-export const editActivity = (state) => ({
-  type: "EDIT_ACTIVITY",
-  payload: state,
-});
-
 export const toggleModal = (state) => ({
   type: "TOGGLE_MODAL",
   payload: state,
