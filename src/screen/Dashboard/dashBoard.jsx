@@ -3,18 +3,10 @@ import axios from "axios";
 import "./dashBoard.styles.scss";
 import { connect } from "react-redux";
 import { API_KEY } from "../../constant";
-import Weather from "../../components/Weather/weather.component";
-import Archrive from "../../components/Archrive/archrive.component";
-import Suggestions from "../../components/Suggestion/suggestion.component";
-import Notifications from "../../components/Notifications/notifications.component";
-import ActiveActivities from "../../components/Active-Activities/activeActivities.component";
-import {
-  setDefined,
-  setDecrementMinutes,
-  sortActiveActivities,
-  sortNonActiveActivities,
-} from "../../redux/activities/activities.action";
-import { getWeatherData } from "../../redux/weather/weather.action";
+import { Weather, Archrive, Suggestions } from "../../components/";
+import { Notifications, ActiveActivities } from "../../components/";
+import { sortActiveActivities, sortNonActiveActivities } from "../../redux/";
+import { setDefined, setDecrementMinutes, getWeatherData } from "../../redux/";
 
 class DashBoard extends React.Component {
   componentDidMount() {

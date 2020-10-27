@@ -1,4 +1,4 @@
-export const handleChange = (state) => ({
+export const handleWeatherChange = (state) => ({
   type: "HANDLE_CHANGE",
   payload: state,
 });

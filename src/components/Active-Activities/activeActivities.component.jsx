@@ -1,12 +1,9 @@
 import React from "react";
-import "./activeActivities.styles.scss";
+import { CustomButton } from "../";
 import { connect } from "react-redux";
-import CustomButton from "../Custome-Button/custom-button.component";
+import "./activeActivities.styles.scss";
+import { sortActivities, setArchriveActivities } from "../../redux/";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {
-  sortActivities,
-  setArchriveActivities,
-} from "../../redux/activities/activities.action";
 
 const ActiveActivities = ({
   sortActivities,

@@ -1,6 +1,7 @@
 import React from "react";
 import "./notifications.styles.scss";
 import { connect } from "react-redux";
+
 const Notifications = ({ notifiedItem }) => (
   <>
     <h3>Notifications</h3>

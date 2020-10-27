@@ -1,14 +1,10 @@
 import React from "react";
-import "./createActivities.styles.scss";
 import { connect } from "react-redux";
-import {
-  addActivities,
-  handleChange,
-} from "../../redux/activities/activities.action";
-import FormInput from "../../components/Form-Input/form-input.component";
-import CustomButton from "../../components/Custome-Button/custom-button.component";
+import "./createActivities.styles.scss";
+import { addActivities, handleChange } from "../../redux/";
+import { FormInput, CustomButton } from "../../components/";
 
-class CreateProject extends React.Component {
+class CreateActivity extends React.Component {
   render() {
     const { handleChange, setName, timeSet, addActivities } = this.props;
     return (
@@ -51,4 +47,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateActivity);

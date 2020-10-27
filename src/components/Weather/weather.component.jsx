@@ -1,18 +1,14 @@
 import React from "react";
 import "./weather.styles.scss";
 import { connect } from "react-redux";
-import FormInput from "../Form-Input/form-input.component";
-import {
-  handleChange,
-  changeWeather,
-} from "../../redux/weather/weather.action";
-import CustomButton from "../Custome-Button/custom-button.component";
+import { FormInput, CustomButton } from "../";
+import { changeWeather, handleWeatherChange } from "../../redux/";
 
 const Weather = ({
   weatherReport,
   basicWeatherData,
   weatherStatus,
-  handleChange,
+  handleWeatherChange,
   givenCityName,
   changeWeather,
 }) => {
@@ -43,9 +39,9 @@ const Weather = ({
           <FormInput
             type="text"
             name="givenCityName"
-            handleChange={handleChange}
-            label={`Check other cities weather`}
             value={givenCityName}
+            handleChange={handleWeatherChange}
+            label={`Check other cities weather`}
             required
           />
           <CustomButton onClick={changeWeather}>Change</CustomButton>
@@ -58,8 +54,8 @@ const Weather = ({
 };
 
 const mapStateToProps = (state) => ({
-  givenCityName: state.weather.givenCityName,
   defaultCity: state.weather.defaultCity,
+  givenCityName: state.weather.givenCityName,
   weatherReport: state.weather.weatherReport,
   weatherStatus: state.weather.weatherStatus,
   basicWeatherData: state.weather.basicWeatherData,
@@ -68,7 +64,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     changeWeather: (weather) => dispatch(changeWeather(weather)),
-    handleChange: (weather) => dispatch(handleChange(weather)),
+    handleWeatherChange: (weather) => dispatch(handleWeatherChange(weather)),
   };
 };
 
