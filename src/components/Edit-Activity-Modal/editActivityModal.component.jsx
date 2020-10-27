@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./editActivityModal.styles.scss";
 import Modal from "../../utils/setModal";
 import { FormInput, CustomButton } from "..";
+import ButtonStyle from "../styles";
 import { handleChange, handleUpdate, toggleModal } from "../../redux";
 
 const EditActivityModal = ({
@@ -44,14 +45,9 @@ const EditActivityModal = ({
             required
           />
         ) : null}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
+        <div style={ButtonStyle.customButtonHolder}>
           <CustomButton
-            style={{ marginRight: "1rem" }}
+            style={ButtonStyle.buttonSpace}
             onClick={() =>
               toggleModal({
                 showModal: !showModal,

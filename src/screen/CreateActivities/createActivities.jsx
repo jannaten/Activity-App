@@ -14,16 +14,16 @@ class CreateActivity extends React.Component {
           <FormInput
             type="text"
             name="setName"
-            handleChange={handleChange}
             value={setName}
+            handleChange={handleChange}
             label={`Give a activity name`}
             required
           />
           <FormInput
             type="time"
             name="timeSet"
-            handleChange={handleChange}
             value={timeSet}
+            handleChange={handleChange}
             required
           />
           <CustomButton onClick={(event) => addActivities(event)}>

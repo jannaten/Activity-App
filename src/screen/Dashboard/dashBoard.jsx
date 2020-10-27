@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./dashBoard.styles.scss";
 import { connect } from "react-redux";
+import DashBoardStyle from "../styles";
 import { API_KEY } from "../../constant";
 import { Weather, Archrive, Suggestions } from "../../components/";
 import { Notifications, ActiveActivities } from "../../components/";
@@ -14,7 +15,7 @@ class DashBoard extends React.Component {
     this.getNonActiveActivities();
     setInterval(() => {
       this.props.setDecrementMinutes();
-    }, 5000);
+    }, 60000);
     this.getWeather();
   }
 
@@ -56,9 +57,7 @@ class DashBoard extends React.Component {
   render() {
     return (
       <div>
-        <h1 style={{ display: "flex", justifyContent: "center" }}>
-          Daily Activities
-        </h1>
+        <h1 style={DashBoardStyle.HeaderContainer}>Daily Activities</h1>
         <div className="container">
           <div className="child-container-1">
             <ActiveActivities />

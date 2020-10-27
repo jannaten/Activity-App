@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import ActivityStyle from "../styles";
 import "./checkActivities.styles.scss";
 import { TableHeader } from "./tableHeader";
 import { EditActivityModal } from "../../components/";
@@ -27,50 +28,22 @@ const CheckActivity = ({
             {activities.map((ac) => (
               <tr key={ac.id}>
                 {ac.completed ? (
-                  <td style={{ textDecoration: "line-through" }}>{ac.name}</td>
+                  <td style={ActivityStyle.LineThrogh}>{ac.name}</td>
                 ) : (
                   <td>{ac.name}</td>
                 )}
                 <td>
                   {ac.completed ? (
                     <>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{
-                            opacity: 0.5,
-                            width: "0.7rem",
-                            height: "0.7rem",
-                            marginRight: "1rem",
-                            background: "green",
-                            borderRadius: "50%",
-                          }}
-                        ></div>
+                      <div style={ActivityStyle.Container}>
+                        <div style={ActivityStyle.listChildOne}></div>
                         <span>Task accomplished</span>
                       </div>
                     </>
                   ) : (
                     <>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                        }}
-                      >
-                        <div
-                          style={{
-                            opacity: 0.5,
-                            width: "0.7rem",
-                            height: "0.7rem",
-                            marginRight: "1rem",
-                            background: "red",
-                            borderRadius: "50%",
-                          }}
-                        ></div>
+                      <div style={ActivityStyle.Container}>
+                        <div style={ActivityStyle.listChildTwo}></div>
                         <span>Task ongoing</span>
                       </div>
                     </>
@@ -91,19 +64,7 @@ const CheckActivity = ({
                 </td>
                 <td>
                   <div
-                    style={{
-                      opacity: 0.65,
-                      width: "2rem",
-                      height: "2rem",
-                      display: "flex",
-                      cursor: "pointer",
-                      background: "white",
-                      borderRadius: "50%",
-                      marginRight: "1rem",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: "1px solid rgba(128,128,128, 0.5)",
-                    }}
+                    style={ActivityStyle.ButtonRoundStyle}
                     onClick={() =>
                       toggleModal({
                         setId: ac.id,
@@ -119,19 +80,7 @@ const CheckActivity = ({
                 </td>
                 <td>
                   <div
-                    style={{
-                      opacity: 0.65,
-                      width: "2rem",
-                      height: "2rem",
-                      display: "flex",
-                      cursor: "pointer",
-                      background: "white",
-                      borderRadius: "50%",
-                      marginRight: "1rem",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: "1px solid rgba(128,128,128, 0.5)",
-                    }}
+                    style={ActivityStyle.ButtonRoundStyle}
                     onClick={() => deleteActivity(ac.id)}
                   >
                     <i className="fas fa-trash"></i>

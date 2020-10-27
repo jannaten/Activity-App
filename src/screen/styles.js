@@ -1,0 +1,33 @@
+export default {
+  LineThrogh: { textDecoration: "line-through" },
+  Container: { display: "flex", alignItems: "center" },
+  listChildOne: {
+    opacity: 0.5,
+    width: "0.7rem",
+    height: "0.7rem",
+    marginRight: "1rem",
+    background: "green",
+    borderRadius: "50%",
+  },
+  listChildTwo: {
+    opacity: 0.5,
+    width: "0.7rem",
+    height: "0.7rem",
+    marginRight: "1rem",
+    background: "red",
+    borderRadius: "50%",
+  },
+  ButtonRoundStyle: {
+    opacity: 0.65,
+    width: "2rem",
+    height: "2rem",
+    display: "flex",
+    cursor: "pointer",
+    background: "white",
+    borderRadius: "50%",
+    marginRight: "1rem",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "1px solid rgba(128,128,128, 0.5)",
+  },
+};

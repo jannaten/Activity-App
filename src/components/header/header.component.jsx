@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => (
   <div className="header">
     <Link className="logo-container" to="/">
-      <strong style={{ lineHeight: "vw" }}>ACTIVITY</strong>
+      <strong>ACTIVITY</strong>
     </Link>
     <div className="options">
       <Link className="option" to="/">
