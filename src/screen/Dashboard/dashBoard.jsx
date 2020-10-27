@@ -57,7 +57,7 @@ class DashBoard extends React.Component {
     return (
       <div>
         <h1 style={{ display: "flex", justifyContent: "center" }}>
-          Todo Activities
+          Daily Activities
         </h1>
         <div className="container">
           <div className="child-container-1">

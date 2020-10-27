@@ -14,7 +14,7 @@ const initState = {
       timeSet:
         Number("00:03".split(":")[0]) * 60 + Number("00:03".split(":")[1]),
     },
-    { id: uuid(), name: "Cooking", completed: true, timeSet: 0 },
+    { id: uuid(), name: "Cooking", completed: true, timeSet: NaN },
     {
       id: uuid(),
       name: "Sleeping",
