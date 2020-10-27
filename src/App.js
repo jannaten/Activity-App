@@ -1,9 +1,8 @@
 import React from "react";
 import "./App.css";
+import { Header} from './components/'
 import { Switch, Route } from "react-router-dom";
 import { CreateActivity, DashBoard } from "./screen/";
-import Header from "./components/Header/header.component";
-
 function App() {
   return (
     <div className="App">
