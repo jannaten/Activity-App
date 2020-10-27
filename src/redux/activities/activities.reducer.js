@@ -188,8 +188,32 @@ const activitiesReducer = (state = initState, action) => {
       };
 
     case "UPDATE_ACTIVITY":
-      console.log(action.payload);
-      return { ...state };
+      let getTheWindowTime = new Date();
+      let windowTime =
+        getTheWindowTime.getHours() * 60 + getTheWindowTime.getMinutes();
+      let setValidTime =
+        Number(state.timeSet.split(":")[0]) * 60 +
+        Number(state.timeSet.split(":")[1]);
+      let getValue = action.payload;
+      let editedArray = state.activities.map((ac) => {
+        if (ac.id === getValue.id && ac.completed === false) {
+          ac.name = getValue.name;
+          ac.completed = getValue.completed;
+          ac.timeSet = setValidTime - windowTime;
+        } else if (ac.id === getValue.id && ac.completed === true) {
+          ac.name = getValue.name;
+          ac.completed = getValue.completed;
+          ac.timeSet = NaN;
+        }
+        return ac;
+      });
+      return {
+        ...state,
+        setName: "",
+        timeSet: "",
+        showModal: false,
+        activities: editedArray,
+      };
 
     case "DELETE_ACTIVITY":
       const afterDeleteActivityArray = state.activities.filter(
