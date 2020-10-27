@@ -9,6 +9,7 @@ import { sortActiveActivities, sortNonActiveActivities } from "../../redux/";
 import { setDefined, setDecrementMinutes, getWeatherData } from "../../redux/";
 
 class DashBoard extends React.Component {
+  activityNull = null;
   componentDidMount() {
     this.getActiveActivities();
     this.getNonActiveActivities();

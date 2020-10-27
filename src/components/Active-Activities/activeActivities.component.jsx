@@ -17,22 +17,23 @@ const ActiveActivities = ({
         {(provided) => (
           <div {...provided.droppableProps} ref={provided.innerRef}>
             {activitiesActive.map((ac, index) => {
+              const { id, name, timeSet, completed } = ac;
               return (
-                <Draggable key={ac.id} index={index} draggableId={ac.id}>
+                <Draggable key={id} index={index} draggableId={id}>
                   {(provided) => (
                     <div
-                      key={ac.id}
+                      key={id}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      {!ac.completed ? (
+                      {!completed ? (
                         <div>
-                          <h4>{ac.name}</h4>
-                          {ac.timeSet >= 0 ? (
+                          <h4>{name}</h4>
+                          {timeSet >= 0 ? (
                             <p>
-                              {ac.timeSet}{" "}
-                              {ac.timeSet === 1 || ac.timeSet === 0 ? (
+                              {timeSet}{" "}
+                              {timeSet === 1 || timeSet === 0 ? (
                                 <span>minute</span>
                               ) : (
                                 <span>minutes</span>
@@ -41,8 +42,8 @@ const ActiveActivities = ({
                             </p>
                           ) : (
                             <p>
-                              You are {Math.abs(ac.timeSet)}{" "}
-                              {Math.abs(ac.timeSet) === 1 ? (
+                              You are {Math.abs(timeSet)}{" "}
+                              {Math.abs(timeSet) === 1 ? (
                                 <span>minute</span>
                               ) : (
                                 <span>minutes</span>
@@ -51,7 +52,7 @@ const ActiveActivities = ({
                             </p>
                           )}
                           <CustomButton
-                            onClick={() => setArchriveActivities(ac.id)}
+                            onClick={() => setArchriveActivities(id)}
                           >
                             Move to Archive
                           </CustomButton>
