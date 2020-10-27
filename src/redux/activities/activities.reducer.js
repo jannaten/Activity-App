@@ -74,9 +74,9 @@ const activitiesReducer = (state = initState, action) => {
         //this.props.history.push("/");
         return {
           ...state,
-          activities: [...state.activities, obj],
           setName: "",
           timeSet: "",
+          activities: [...state.activities, obj],
         };
       }
       return { ...state };
@@ -101,9 +101,9 @@ const activitiesReducer = (state = initState, action) => {
           if (ac.id === action.payload) {
             let obj = {
               id: ac.id,
+              timeSet: NaN,
               name: ac.name,
               completed: true,
-              timeSet: NaN,
             };
             return getArchriveItem.push(obj);
           }
@@ -111,17 +111,17 @@ const activitiesReducer = (state = initState, action) => {
             if (ac.id === action.payload) {
               let obj = {
                 id: ac.id,
+                timeSet: NaN,
                 name: ac.name,
                 completed: true,
-                timeSet: NaN,
               };
               return obj;
             } else {
               let obj = {
                 id: ac.id,
                 name: ac.name,
-                completed: ac.completed,
                 timeSet: ac.timeSet,
+                completed: ac.completed,
               };
               return obj;
             }
@@ -132,11 +132,11 @@ const activitiesReducer = (state = initState, action) => {
         return {
           ...state,
           activitiesNonActive: [
-            ...state.activitiesNonActive,
             ...getArchriveItem,
+            ...state.activitiesNonActive,
           ],
-          activitiesActive: modifiedActive,
           activities: modifedArray,
+          activitiesActive: modifiedActive,
         };
       }
       return { ...state };
@@ -164,8 +164,8 @@ const activitiesReducer = (state = initState, action) => {
       );
       return {
         ...state,
-        activitiesActive: filteredArr,
         activities: decresedTimeArr,
+        activitiesActive: filteredArr,
         notifiedItem: getFilteredNotifiedItem,
       };
 

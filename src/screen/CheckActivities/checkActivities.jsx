@@ -16,15 +16,17 @@ class CheckActivity extends React.Component {
       <div>
         <h2>All activities - total {this.props.activities.length} rows</h2>
         <table>
-          <tr>
-            <th>Activity Name</th>
-            <th>Status</th>
-            <th>Time Remaining</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
+          <thead>
+            <tr>
+              <th>Activity Name</th>
+              <th>Status</th>
+              <th>Time Remaining</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
           {this.props.activities.length > 0 ? (
-            <>
+            <tbody>
               {this.props.activities.map((ac) => (
                 <tr key={ac.id}>
                   {ac.completed ? (
@@ -133,9 +135,13 @@ class CheckActivity extends React.Component {
                   </td>
                 </tr>
               ))}
-            </>
+            </tbody>
           ) : (
-            <h4>No activites yet. </h4>
+            <tbody>
+              <tr>
+                <td>No activites yet.</td>
+              </tr>
+            </tbody>
           )}
         </table>
       </div>
