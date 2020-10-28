@@ -17,11 +17,19 @@ class Suggestions extends React.Component {
         <h3>Suggestions</h3>
         {visible ? (
           <>
-            <h4>weather Stutus</h4>
-            <img
-              src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
-              alt=""
-            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
+                alt=""
+              />
+              <h4>{weatherStatus.description}</h4>
+            </div>
             <DescriptionHolder desc={weatherStatus.description} />
           </>
         ) : (
