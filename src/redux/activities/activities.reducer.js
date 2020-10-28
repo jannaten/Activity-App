@@ -6,10 +6,10 @@ const initState = {
   setValidTime: "",
   showModal: false,
   setName: "",
-  timeSet: "",
   notifiedItem: [],
   activitiesActive: [],
   activitiesNonActive: [],
+  timeSet: new Date().getHours() + ":" + new Date().getMinutes(),
   activities: [
     {
       id: uuid(),
@@ -193,19 +193,38 @@ const activitiesReducer = (state = initState, action) => {
       let setValidTime =
         Number(state.timeSet.split(":")[0]) * 60 +
         Number(state.timeSet.split(":")[1]);
-      console.log(action.payload);
       let getValue = action.payload;
+      console.log(action.payload);
       if (
-        setValidTime > windowTime &&
+        setValidTime &&
+        getValue.name !== "" &&
         getValue.timeSet !== "" &&
-        getValue.name !== ""
+        setValidTime > windowTime
       ) {
         let editedArray = state.activities.map((ac) => {
           if (ac.id === getValue.id && ac.completed === false) {
             ac.name = getValue.name;
             ac.completed = getValue.completed;
             ac.timeSet = setValidTime - windowTime;
-          } else if (ac.id === getValue.id && ac.completed === true) {
+          }
+          return ac;
+        });
+        return {
+          ...state,
+          setId: "",
+          setName: "",
+          timeSet: "",
+          setValidTime: 0,
+          showModal: false,
+          activities: editedArray,
+        };
+      } else if (
+        !setValidTime &&
+        getValue.name !== "" &&
+        getValue.timeSet === ""
+      ) {
+        let editedArray = state.activities.map((ac) => {
+          if (ac.id === getValue.id && ac.completed === true) {
             ac.name = getValue.name;
             ac.completed = getValue.completed;
             ac.timeSet = NaN;
