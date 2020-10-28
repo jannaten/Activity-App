@@ -71,10 +71,8 @@ const ActiveActivities = ({
     ) : (
       <>
         <h4>No more active projects</h4>
-        <Link to= {{pathname : '/create'}}>
-        <CustomButton>
-         Add Activity
-        </CustomButton>
+        <Link to={{ pathname: "/create" }}>
+          <CustomButton>Add Activity</CustomButton>
         </Link>
       </>
     )}

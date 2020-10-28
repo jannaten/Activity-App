@@ -80,9 +80,9 @@ const CheckActivity = ({
                               onClick={() =>
                                 toggleModal({
                                   setId: ac.id,
-                                  setCompleted: ac.completed,
-                                  setValidTime: ac.timeSet,
                                   showModal: !showModal,
+                                  setValidTime: ac.timeSet,
+                                  setCompleted: ac.completed,
                                 })
                               }
                             >

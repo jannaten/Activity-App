@@ -10,11 +10,12 @@ class Suggestions extends React.Component {
     }, 5000);
   }
   render() {
+    const { visible, weatherStatus } = this.props;
     return (
       <>
         <h3>Suggestions</h3>
-        {this.props.visible ? (
-          <p>{this.props.weatherStatus.description}</p>
+        {visible ? (
+          <p>{weatherStatus.description}</p>
         ) : (
           <p>No suggestions at this moment</p>
         )}
