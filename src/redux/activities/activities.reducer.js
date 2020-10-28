@@ -2,10 +2,10 @@ import { v4 as uuid } from "uuid";
 
 const initState = {
   setId: "",
+  setName: "",
   setCompleted: "",
   setValidTime: "",
   showModal: false,
-  setName: "",
   notifiedItem: [],
   activitiesActive: [],
   activitiesNonActive: [],
@@ -93,6 +93,25 @@ const activitiesReducer = (state = initState, action) => {
       return {
         ...state,
         activitiesActive: [...items],
+      };
+
+    case "SORT_CHECK_ACTIVITY":
+      if (!action.payload.destination) return;
+      const checkItems = Array.from(state.activities);
+      const [checkReorderedItem] = checkItems.splice(
+        action.payload.source.index,
+        1
+      );
+      console.log(checkReorderedItem);
+
+      checkItems.splice(
+        action.payload.destination.index,
+        0,
+        checkReorderedItem
+      );
+      return {
+        ...state,
+        activities: [...checkItems],
       };
 
     case "SET_ARCHRIVE_ACTIVITIES":

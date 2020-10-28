@@ -9,6 +9,7 @@ export {
   sortActivities,
   deleteActivity,
   setDecrementMinutes,
+  sortCheckActivities,
   sortActiveActivities,
   setArchriveActivities,
   sortNonActiveActivities,

@@ -52,3 +52,8 @@ export const handleUpdate = (state) => ({
   type: "UPDATE_ACTIVITY",
   payload: state,
 });
+
+export const sortCheckActivities = (state) => ({
+  type: "SORT_CHECK_ACTIVITY",
+  payload: state,
+});
