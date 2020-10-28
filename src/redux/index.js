@@ -15,6 +15,7 @@ export {
 } from "./activities/activities.action";
 export {
   changeWeather,
+  toggleVisible,
   getWeatherData,
   handleWeatherChange,
 } from "./weather/weather.action";

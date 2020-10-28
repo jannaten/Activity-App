@@ -177,7 +177,6 @@ const activitiesReducer = (state = initState, action) => {
       return { ...state, activitiesActive: [], activities: nonActiveArr };
 
     case "TOGGLE_MODAL":
-      console.log(action.payload);
       return {
         ...state,
         setId: action.payload.setId,
@@ -194,7 +193,6 @@ const activitiesReducer = (state = initState, action) => {
         Number(state.timeSet.split(":")[0]) * 60 +
         Number(state.timeSet.split(":")[1]);
       let getValue = action.payload;
-      console.log(action.payload);
       if (
         setValidTime &&
         getValue.name !== "" &&

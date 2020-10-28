@@ -12,3 +12,8 @@ export const getWeatherData = (state) => ({
   type: "GET_WEATHER",
   payload: state,
 });
+
+export const toggleVisible = (state) => ({
+  type: "TOGGLE_VISIBLE",
+  payload: state,
+});

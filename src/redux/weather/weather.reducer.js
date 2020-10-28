@@ -1,6 +1,7 @@
 import { DEFAULT_CITY } from "../../constant";
 
 const initState = {
+  visible: false,
   givenCityName: "",
   weatherReport: {},
   weatherStatus: {},
@@ -20,6 +21,8 @@ const weatherReducer = (state = initState, action) => {
       action.payload.preventDefault();
       const val = state.givenCityName;
       return { ...state, defaultCity: val, givenCityName: "" };
+    case "TOGGLE_VISIBLE":
+      return { ...state, visible: true };
     default:
       return state;
   }
