@@ -17,3 +17,8 @@ export const toggleVisible = (state) => ({
   type: "TOGGLE_VISIBLE",
   payload: state,
 });
+
+export const toggleLight = (state) => ({
+  type: "CHANGE_LIGHT",
+  payload: state,
+});

@@ -2,6 +2,7 @@ import { DEFAULT_CITY } from "../../constant";
 
 const initState = {
   visible: false,
+  light: "Night",
   givenCityName: "",
   weatherReport: {},
   weatherStatus: {},
@@ -23,6 +24,14 @@ const weatherReducer = (state = initState, action) => {
       return { ...state, defaultCity: val, givenCityName: "" };
     case "TOGGLE_VISIBLE":
       return { ...state, visible: true };
+    case "CHANGE_LIGHT":
+      if (state.weatherStatus.icon.includes("d")) {
+        return { ...state, light: "Day" };
+      } else if (state.weatherStatus.icon.includes("n")) {
+        return { ...state, light: "Night" };
+      } else {
+        return { ...state, light: "" };
+      }
     default:
       return state;
   }

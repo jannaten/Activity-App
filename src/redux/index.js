@@ -15,6 +15,7 @@ export {
   sortNonActiveActivities,
 } from "./activities/activities.action";
 export {
+  toggleLight,
   changeWeather,
   toggleVisible,
   getWeatherData,
