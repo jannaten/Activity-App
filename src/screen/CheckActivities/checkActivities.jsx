@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import ActivityStyle from "../styles";
 import "./checkActivities.styles.scss";
+import { Link } from "react-router-dom";
 import { TableHeader } from "./tableHeader";
-import { EditActivityModal } from "../../components/";
+import { CustomButton, EditActivityModal } from "../../components/";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { deleteActivity, sortCheckActivities, toggleModal } from "../../redux/";
 
@@ -106,14 +107,16 @@ const CheckActivity = ({
                 </tbody>
               )}
             </Droppable>
-          ) : (
-            <tbody>
-              <tr>
-                <td>No activites yet.</td>
-              </tr>
-            </tbody>
-          )}
+          ) : null}
         </table>
+        {activities.length === 0 ? (
+          <div>
+            <p>No activites yet.</p>
+            <Link to={{ pathname: "/create" }}>
+              <CustomButton>Add Activity</CustomButton>
+            </Link>
+          </div>
+        ) : null}
       </div>
     </DragDropContext>
   );
