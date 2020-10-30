@@ -1,4 +1,5 @@
 import { DEFAULT_CITY } from "../../constant";
+import { WeatherActionTypes as TYPES } from "./weather.types";
 
 const initState = {
   visible: false,
@@ -12,19 +13,19 @@ const initState = {
 
 const weatherReducer = (state = initState, action) => {
   switch (action.type) {
-    case "GET_WEATHER":
+    case TYPES.GET_WEATHER:
       const { basicWeatherData, weatherStatus, weatherReport } = action.payload;
       return { ...state, basicWeatherData, weatherStatus, weatherReport };
-    case "HANDLE_CHANGE":
+    case TYPES.HANDLE_CHANGE:
       const { value, name } = action.payload.target;
       return { ...state, [name]: value };
-    case "CHANGE_WEATHER":
+    case TYPES.CHANGE_WEATHER:
       action.payload.preventDefault();
       const val = state.givenCityName;
       return { ...state, defaultCity: val, givenCityName: "" };
-    case "TOGGLE_VISIBLE":
+    case TYPES.TOGGLE_VISIBLE:
       return { ...state, visible: true };
-    case "CHANGE_LIGHT":
+    case TYPES.CHANGE_LIGHT:
       if (state.weatherStatus.icon.includes("d")) {
         return { ...state, light: "Day" };
       } else if (state.weatherStatus.icon.includes("n")) {

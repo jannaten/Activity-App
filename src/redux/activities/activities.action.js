@@ -1,59 +1,61 @@
+import { ActivitiesActionTypes as TYPES } from "./activities.types";
+
 export const addActivities = (state) => ({
-  type: "ADD_ACTIVITIES",
+  type: TYPES.ADD_ACTIVITIES,
   payload: state,
 });
 
 export const sortActivities = (state) => ({
-  type: "SORT_ACTIVITIES",
+  type: TYPES.SORT_ACTIVITIES,
   payload: state,
 });
 
 export const setArchriveActivities = (state) => ({
-  type: "SET_ARCHRIVE_ACTIVITIES",
+  type: TYPES.SET_ARCHRIVE_ACTIVITIES,
   payload: state,
 });
 
 export const setDecrementMinutes = (state) => ({
-  type: "SET_DECREAMENT_MINUTES",
+  type: TYPES.SET_DECREAMENT_MINUTES,
   payload: state,
 });
 
 export const handleChange = (state) => ({
-  type: "HANDLE_CHANGE",
+  type: TYPES.HANDLE_CHANGE,
   payload: state,
 });
 
 export const sortActiveActivities = (state) => ({
-  type: "SORT_ACTIVE_ACTIVITIES",
+  type: TYPES.SORT_ACTIVE_ACTIVITIES,
   payload: state,
 });
 
 export const sortNonActiveActivities = (state) => ({
-  type: "SORT_NONACTIVE_ACTIVITIES",
+  type: TYPES.SORT_NONACTIVE_ACTIVITIES,
   payload: state,
 });
 
 export const setDefined = (state) => ({
-  type: "SET_DEFINED",
+  type: TYPES.SET_DEFINED,
   payload: state,
 });
 
 export const deleteActivity = (state) => ({
-  type: "DELETE_ACTIVITY",
+  type: TYPES.DELETE_ACTIVITY,
   payload: state,
 });
 
 export const toggleModal = (state) => ({
-  type: "TOGGLE_MODAL",
+  type: TYPES.TOGGLE_MODAL,
   payload: state,
 });
 
 export const handleUpdate = (state) => ({
-  type: "UPDATE_ACTIVITY",
+  type: TYPES.UPDATE_ACTIVITY,
   payload: state,
 });
 
 export const sortCheckActivities = (state) => ({
-  type: "SORT_CHECK_ACTIVITY",
+  type: TYPES.SORT_CHECK_ACTIVITY,
   payload: state,
 });

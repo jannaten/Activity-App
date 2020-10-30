@@ -1,4 +1,5 @@
 import { v4 as uuid } from "uuid";
+import { ActivitiesActionTypes as TYPES } from "./activities.types";
 
 const initState = {
   setId: "",
@@ -31,11 +32,11 @@ const initState = {
 
 const activitiesReducer = (state = initState, action) => {
   switch (action.type) {
-    case "HANDLE_CHANGE":
+    case TYPES.HANDLE_CHANGE:
       const { value, name } = action.payload.target;
       return { ...state, [name]: value };
 
-    case "SORT_ACTIVE_ACTIVITIES":
+    case TYPES.SORT_ACTIVE_ACTIVITIES:
       let getArr = state.activities.map((ac) => {
         if (ac.completed !== true) {
           return {
@@ -47,7 +48,7 @@ const activitiesReducer = (state = initState, action) => {
       let getfilteredArr = getArr.filter((ac) => ac !== undefined);
       return { ...state, activitiesActive: getfilteredArr };
 
-    case "SORT_NONACTIVE_ACTIVITIES":
+    case TYPES.SORT_NONACTIVE_ACTIVITIES:
       let getArray = state.activities.map((ac) => {
         if (ac.completed === true) {
           return {
@@ -58,7 +59,7 @@ const activitiesReducer = (state = initState, action) => {
       let getfilteredArray = getArray.filter((ac) => ac !== undefined);
       return { ...state, activitiesNonActive: getfilteredArray };
 
-    case "ADD_ACTIVITIES":
+    case TYPES.ADD_ACTIVITIES:
       action.payload.preventDefault();
       const { setName, timeSet } = state;
       let getWindowTime = new Date();
@@ -84,7 +85,7 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
-    case "SORT_ACTIVITIES":
+    case TYPES.SORT_ACTIVITIES:
       const { destination, source } = action.payload;
       if (!destination) return;
       const items = Array.from(state.activitiesActive);
@@ -95,7 +96,7 @@ const activitiesReducer = (state = initState, action) => {
         activitiesActive: [...items],
       };
 
-    case "SORT_CHECK_ACTIVITY":
+    case TYPES.SORT_CHECK_ACTIVITY:
       if (!action.payload.destination) return;
       const checkItems = Array.from(state.activities);
       const [checkReorderedItem] = checkItems.splice(
@@ -114,7 +115,7 @@ const activitiesReducer = (state = initState, action) => {
         activities: [...checkItems],
       };
 
-    case "SET_ARCHRIVE_ACTIVITIES":
+    case TYPES.SET_ARCHRIVE_ACTIVITIES:
       if (state.activities !== undefined && state.activities !== undefined) {
         let getArchriveItem = [];
         let modifedArray;
@@ -163,7 +164,7 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
-    case "SET_DECREAMENT_MINUTES":
+    case TYPES.SET_DECREAMENT_MINUTES:
       //Decrement minutes
       let newArr = state.activitiesActive.map((ac) => {
         return {
@@ -191,20 +192,21 @@ const activitiesReducer = (state = initState, action) => {
         notifiedItem: getFilteredNotifiedItem,
       };
 
-    case "SET_DEFINED":
+    case TYPES.SET_DEFINED:
       let nonActiveArr = state.activitiesNonActive;
       return { ...state, activitiesActive: [], activities: nonActiveArr };
 
-    case "TOGGLE_MODAL":
+    case TYPES.TOGGLE_MODAL:
       return {
         ...state,
+        setName: "",
         setId: action.payload.setId,
         showModal: action.payload.showModal,
         setCompleted: action.payload.setCompleted,
         setValidTime: action.payload.setValidTime,
       };
 
-    case "UPDATE_ACTIVITY":
+    case TYPES.UPDATE_ACTIVITY:
       let getTheWindowTime = new Date();
       let windowTime =
         getTheWindowTime.getHours() * 60 + getTheWindowTime.getMinutes();
@@ -262,7 +264,7 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
-    case "DELETE_ACTIVITY":
+    case TYPES.DELETE_ACTIVITY:
       const afterDeleteActivityArray = state.activities.filter(
         (el) => el.id !== action.payload
       );
