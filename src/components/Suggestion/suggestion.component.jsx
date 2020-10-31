@@ -54,11 +54,9 @@ const mapStateToProps = ({ weather: { light, visible, weatherStatus } }) => ({
   weatherStatus,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleLight: () => dispatch(toggleLight()),
-    toggleVisible: () => dispatch(toggleVisible()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  toggleLight: () => dispatch(toggleLight()),
+  toggleVisible: () => dispatch(toggleVisible()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Suggestions);

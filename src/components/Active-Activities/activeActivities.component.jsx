@@ -83,12 +83,10 @@ const mapStateToProps = ({ activities: { activitiesActive } }) => ({
   activitiesActive,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sortActivities: (activities) => dispatch(sortActivities(activities)),
-    setArchriveActivities: (activities) =>
-      dispatch(setArchriveActivities(activities)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  sortActivities: (activities) => dispatch(sortActivities(activities)),
+  setArchriveActivities: (activities) =>
+    dispatch(setArchriveActivities(activities)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ActiveActivities);

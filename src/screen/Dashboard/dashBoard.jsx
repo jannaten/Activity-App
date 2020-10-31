@@ -90,14 +90,12 @@ const mapStateToProps = ({
   defaultCity,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setDefined: () => dispatch(setDefined()),
-    setDecrementMinutes: () => dispatch(setDecrementMinutes()),
-    sortActiveActivities: () => dispatch(sortActiveActivities()),
-    getWeatherData: (weather) => dispatch(getWeatherData(weather)),
-    sortNonActiveActivities: () => dispatch(sortNonActiveActivities()),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  setDefined: () => dispatch(setDefined()),
+  setDecrementMinutes: () => dispatch(setDecrementMinutes()),
+  sortActiveActivities: () => dispatch(sortActiveActivities()),
+  getWeatherData: (weather) => dispatch(getWeatherData(weather)),
+  sortNonActiveActivities: () => dispatch(sortNonActiveActivities()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

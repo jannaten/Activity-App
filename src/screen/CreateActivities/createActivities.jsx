@@ -40,11 +40,9 @@ const mapStateToProps = ({ activities: { setName, timeSet } }) => ({
   timeSet,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addActivities: (ac) => dispatch(addActivities(ac)),
-    handleChange: (ac) => dispatch(handleChange(ac)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  handleChange: (ac) => dispatch(handleChange(ac)),
+  addActivities: (ac) => dispatch(addActivities(ac)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateActivity);

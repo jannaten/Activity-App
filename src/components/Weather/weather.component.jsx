@@ -69,11 +69,9 @@ const mapStateToProps = ({
   basicWeatherData,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeWeather: (weather) => dispatch(changeWeather(weather)),
-    handleWeatherChange: (weather) => dispatch(handleWeatherChange(weather)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  changeWeather: (weather) => dispatch(changeWeather(weather)),
+  handleWeatherChange: (weather) => dispatch(handleWeatherChange(weather)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Weather);

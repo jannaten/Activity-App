@@ -92,12 +92,10 @@ const mapStateToProps = ({
   setCompleted,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleModal: (modal) => dispatch(toggleModal(modal)),
-    handleUpdate: (modal) => dispatch(handleUpdate(modal)),
-    handleChange: (change) => dispatch(handleChange(change)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  toggleModal: (modal) => dispatch(toggleModal(modal)),
+  handleUpdate: (modal) => dispatch(handleUpdate(modal)),
+  handleChange: (change) => dispatch(handleChange(change)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditActivityModal);

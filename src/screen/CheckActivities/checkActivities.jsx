@@ -127,12 +127,10 @@ const mapStateToProps = ({ activities: { showModal, activities } }) => ({
   activities,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleModal: (activity) => dispatch(toggleModal(activity)),
-    deleteActivity: (activity) => dispatch(deleteActivity(activity)),
-    sortCheckActivities: (activity) => dispatch(sortCheckActivities(activity)),
-  };
-};
+const mapDispatchToProps = (dispatch) => ({
+  toggleModal: (activity) => dispatch(toggleModal(activity)),
+  deleteActivity: (activity) => dispatch(deleteActivity(activity)),
+  sortCheckActivities: (activity) => dispatch(sortCheckActivities(activity)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckActivity);
