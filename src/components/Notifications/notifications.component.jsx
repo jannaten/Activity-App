@@ -21,8 +21,8 @@ const Notifications = ({ notifiedItem }) => (
   </>
 );
 
-const mapStateToProps = (state) => ({
-  notifiedItem: state.activities.notifiedItem,
+const mapStateToProps = ({ activities: notifiedItem }) => ({
+  notifiedItem,
 });
 
 export default connect(mapStateToProps)(Notifications);

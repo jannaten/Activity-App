@@ -79,8 +79,8 @@ const ActiveActivities = ({
   </DragDropContext>
 );
 
-const mapStateToProps = (state) => ({
-  activitiesActive: state.activities.activitiesActive,
+const mapStateToProps = ({ activities: { activitiesActive } }) => ({
+  activitiesActive,
 });
 
 const mapDispatchToProps = (dispatch) => {

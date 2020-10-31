@@ -15,10 +15,10 @@ const Weather = ({
   const wR = Object.keys(weatherReport);
   const {
     temp,
-    humidity,
     temp_min,
-    pressure,
     temp_max,
+    humidity,
+    pressure,
     feels_like,
   } = basicWeatherData;
   const { name } = weatherReport;
@@ -53,12 +53,20 @@ const Weather = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  defaultCity: state.weather.defaultCity,
-  givenCityName: state.weather.givenCityName,
-  weatherReport: state.weather.weatherReport,
-  weatherStatus: state.weather.weatherStatus,
-  basicWeatherData: state.weather.basicWeatherData,
+const mapStateToProps = ({
+  weather: {
+    defaultCity,
+    givenCityName,
+    weatherReport,
+    weatherStatus,
+    basicWeatherData,
+  },
+}) => ({
+  defaultCity,
+  givenCityName,
+  weatherReport,
+  weatherStatus,
+  basicWeatherData,
 });
 
 const mapDispatchToProps = (dispatch) => {

@@ -122,9 +122,9 @@ const CheckActivity = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  showModal: state.activities.showModal,
-  activities: state.activities.activities,
+const mapStateToProps = ({ activities: { showModal, activities } }) => ({
+  showModal,
+  activities,
 });
 
 const mapDispatchToProps = (dispatch) => {

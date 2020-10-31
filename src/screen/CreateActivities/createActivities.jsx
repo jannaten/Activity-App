@@ -35,9 +35,9 @@ class CreateActivity extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  setName: state.activities.setName,
-  timeSet: state.activities.timeSet,
+const mapStateToProps = ({ activities: { setName, timeSet } }) => ({
+  setName,
+  timeSet,
 });
 
 const mapDispatchToProps = (dispatch) => {

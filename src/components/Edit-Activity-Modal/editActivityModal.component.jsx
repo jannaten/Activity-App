@@ -74,13 +74,22 @@ const EditActivityModal = ({
   </Modal>
 );
 
-const mapStateToProps = (state) => ({
-  setId: state.activities.setId,
-  timeSet: state.activities.timeSet,
-  setName: state.activities.setName,
-  showModal: state.activities.showModal,
-  setValidTime: state.activities.setValidTime,
-  setCompleted: state.activities.setCompleted,
+const mapStateToProps = ({
+  activities: {
+    setId,
+    timeSet,
+    setName,
+    showModal,
+    setValidTime,
+    setCompleted,
+  },
+}) => ({
+  setId,
+  timeSet,
+  setName,
+  showModal,
+  setValidTime,
+  setCompleted,
 });
 
 const mapDispatchToProps = (dispatch) => {

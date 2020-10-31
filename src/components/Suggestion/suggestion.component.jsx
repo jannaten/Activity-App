@@ -7,9 +7,14 @@ import DescriptionHolder from "../../utils/descriptionHolder";
 class Suggestions extends React.Component {
   componentDidMount() {
     setTimeout(() => {
-      this.props.toggleLight();
       this.props.toggleVisible();
     }, 5000);
+  }
+
+  componentDidUpdate(pP, pS, PP) {
+    if (pP.weatherStatus.icon !== this.props.weatherStatus.icon) {
+      this.props.toggleLight();
+    }
   }
 
   render() {
@@ -30,7 +35,8 @@ class Suggestions extends React.Component {
                 src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
                 alt=""
               />
-              <h4>{weatherStatus.description}</h4>( <h4> {light} </h4> )
+              <h4>{weatherStatus.description}</h4>({" "}
+              {weatherStatus ? <h4> {light} </h4> : null})
             </div>
             <DescriptionHolder desc={weatherStatus.description.toLowerCase()} />
           </>
@@ -42,16 +48,16 @@ class Suggestions extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  light: state.weather.light,
-  visible: state.weather.visible,
-  weatherStatus: state.weather.weatherStatus,
+const mapStateToProps = ({ weather: { light, visible, weatherStatus } }) => ({
+  light,
+  visible,
+  weatherStatus,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleLight: (light) => dispatch(toggleLight(light)),
-    toggleVisible: (visible) => dispatch(toggleVisible(visible)),
+    toggleLight: () => dispatch(toggleLight()),
+    toggleVisible: () => dispatch(toggleVisible()),
   };
 };
 

@@ -19,8 +19,8 @@ const Archrive = ({ activitiesNonActive }) => (
   </>
 );
 
-const mapStateToProps = (state) => ({
-  activitiesNonActive: state.activities.activitiesNonActive,
+const mapStateToProps = ({ activities: { activitiesNonActive } }) => ({
+  activitiesNonActive,
 });
 
 export default connect(mapStateToProps)(Archrive);

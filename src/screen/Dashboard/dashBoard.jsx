@@ -82,21 +82,21 @@ class DashBoard extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  defaultCity: state.weather.defaultCity,
-  activities: state.activities.activities,
+const mapStateToProps = ({
+  weather: { defaultCity },
+  activities: { activities },
+}) => ({
+  activities,
+  defaultCity,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setDecrementMinutes: (activities) =>
-      dispatch(setDecrementMinutes(activities)),
-    sortActiveActivities: (activities) =>
-      dispatch(sortActiveActivities(activities)),
-    sortNonActiveActivities: (activities) =>
-      dispatch(sortNonActiveActivities(activities)),
-    setDefined: (activities) => dispatch(setDefined(activities)),
-    getWeatherData: (activities) => dispatch(getWeatherData(activities)),
+    setDefined: () => dispatch(setDefined()),
+    setDecrementMinutes: () => dispatch(setDecrementMinutes()),
+    sortActiveActivities: () => dispatch(sortActiveActivities()),
+    getWeatherData: (weather) => dispatch(getWeatherData(weather)),
+    sortNonActiveActivities: () => dispatch(sortNonActiveActivities()),
   };
 };
 

@@ -15,9 +15,8 @@ export const setArchriveActivities = (state) => ({
   payload: state,
 });
 
-export const setDecrementMinutes = (state) => ({
+export const setDecrementMinutes = () => ({
   type: TYPES.SET_DECREAMENT_MINUTES,
-  payload: state,
 });
 
 export const handleChange = (state) => ({
@@ -25,19 +24,16 @@ export const handleChange = (state) => ({
   payload: state,
 });
 
-export const sortActiveActivities = (state) => ({
+export const sortActiveActivities = () => ({
   type: TYPES.SORT_ACTIVE_ACTIVITIES,
-  payload: state,
 });
 
-export const sortNonActiveActivities = (state) => ({
+export const sortNonActiveActivities = () => ({
   type: TYPES.SORT_NONACTIVE_ACTIVITIES,
-  payload: state,
 });
 
-export const setDefined = (state) => ({
+export const setDefined = () => ({
   type: TYPES.SET_DEFINED,
-  payload: state,
 });
 
 export const deleteActivity = (state) => ({

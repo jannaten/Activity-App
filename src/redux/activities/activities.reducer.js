@@ -32,10 +32,12 @@ const initState = {
 
 const activitiesReducer = (state = initState, action) => {
   switch (action.type) {
+    //While user giving some values it set the state
     case TYPES.HANDLE_CHANGE:
       const { value, name } = action.payload.target;
       return { ...state, [name]: value };
 
+    //Making state for active activities
     case TYPES.SORT_ACTIVE_ACTIVITIES:
       let getArr = state.activities.map((ac) => {
         if (ac.completed !== true) {
@@ -48,6 +50,7 @@ const activitiesReducer = (state = initState, action) => {
       let getfilteredArr = getArr.filter((ac) => ac !== undefined);
       return { ...state, activitiesActive: getfilteredArr };
 
+    //Making state for active activities
     case TYPES.SORT_NONACTIVE_ACTIVITIES:
       let getArray = state.activities.map((ac) => {
         if (ac.completed === true) {
@@ -59,6 +62,7 @@ const activitiesReducer = (state = initState, action) => {
       let getfilteredArray = getArray.filter((ac) => ac !== undefined);
       return { ...state, activitiesNonActive: getfilteredArray };
 
+    //Adding an activities to the state
     case TYPES.ADD_ACTIVITIES:
       action.payload.preventDefault();
       const { setName, timeSet } = state;
@@ -85,6 +89,7 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
+    //Responsible for doing the drag and drop effect in Dashboard
     case TYPES.SORT_ACTIVITIES:
       const { destination, source } = action.payload;
       if (!destination) return;
@@ -96,6 +101,7 @@ const activitiesReducer = (state = initState, action) => {
         activitiesActive: [...items],
       };
 
+    //Responsible for doing drag and drop in Check all Items section
     case TYPES.SORT_CHECK_ACTIVITY:
       if (!action.payload.destination) return;
       const checkItems = Array.from(state.activities);
@@ -103,7 +109,6 @@ const activitiesReducer = (state = initState, action) => {
         action.payload.source.index,
         1
       );
-      console.log(checkReorderedItem);
 
       checkItems.splice(
         action.payload.destination.index,
@@ -115,6 +120,7 @@ const activitiesReducer = (state = initState, action) => {
         activities: [...checkItems],
       };
 
+    //Setting the state for archrive activities
     case TYPES.SET_ARCHRIVE_ACTIVITIES:
       if (state.activities !== undefined && state.activities !== undefined) {
         let getArchriveItem = [];
@@ -164,8 +170,8 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
+    // Track the activities time
     case TYPES.SET_DECREAMENT_MINUTES:
-      //Decrement minutes
       let newArr = state.activitiesActive.map((ac) => {
         return {
           ...ac,
@@ -174,9 +180,6 @@ const activitiesReducer = (state = initState, action) => {
       });
       let filteredArr = newArr.filter((ac) => ac !== undefined);
       let decresedTimeArr = [...newArr, ...state.activitiesNonActive];
-
-      //Notified Item
-
       let getNotifiedItem = newArr.map((nA) => {
         if (nA.timeSet <= 0) {
           return nA;
@@ -192,10 +195,12 @@ const activitiesReducer = (state = initState, action) => {
         notifiedItem: getFilteredNotifiedItem,
       };
 
+    //Setting the state for some unhandled properties
     case TYPES.SET_DEFINED:
       let nonActiveArr = state.activitiesNonActive;
       return { ...state, activitiesActive: [], activities: nonActiveArr };
 
+    //Toggling models as well as set some important states
     case TYPES.TOGGLE_MODAL:
       return {
         ...state,
@@ -206,6 +211,7 @@ const activitiesReducer = (state = initState, action) => {
         setValidTime: action.payload.setValidTime,
       };
 
+    //Editing activites to the UI
     case TYPES.UPDATE_ACTIVITY:
       let getTheWindowTime = new Date();
       let windowTime =
@@ -264,6 +270,7 @@ const activitiesReducer = (state = initState, action) => {
       }
       return { ...state };
 
+    //Remove an activity from the UI
     case TYPES.DELETE_ACTIVITY:
       const afterDeleteActivityArray = state.activities.filter(
         (el) => el.id !== action.payload
@@ -282,6 +289,7 @@ const activitiesReducer = (state = initState, action) => {
         activitiesNonActive: afterDeleteNonActiveActivityArray,
       };
 
+    //If no action happens its retruns the states
     default:
       return state;
   }
