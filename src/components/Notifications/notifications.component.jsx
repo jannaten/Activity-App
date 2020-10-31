@@ -21,7 +21,7 @@ const Notifications = ({ notifiedItem }) => (
   </>
 );
 
-const mapStateToProps = ({ activities: notifiedItem }) => ({
+const mapStateToProps = ({ activities: { notifiedItem } }) => ({
   notifiedItem,
 });
 

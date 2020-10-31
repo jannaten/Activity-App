@@ -39,27 +39,28 @@ const activitiesReducer = (state = initState, action) => {
 
     //Making state for active activities
     case TYPES.SORT_ACTIVE_ACTIVITIES:
-      let getArr = state.activities.map((ac) => {
+      let arrayActiveObject = [];
+      state.activities.map((ac) => {
         if (ac.completed !== true) {
-          return {
-            ...ac,
-            timeSet: ac.timeSet,
-          };
+          return arrayActiveObject.push({ ...ac, timeSet: ac.timeSet });
         }
+        return arrayActiveObject;
       });
-      let getfilteredArr = getArr.filter((ac) => ac !== undefined);
+      let getfilteredArr = arrayActiveObject.filter((ac) => ac !== undefined);
       return { ...state, activitiesActive: getfilteredArr };
 
     //Making state for active activities
     case TYPES.SORT_NONACTIVE_ACTIVITIES:
-      let getArray = state.activities.map((ac) => {
+      let arrayNonActiveObject = [];
+      state.activities.map((ac) => {
         if (ac.completed === true) {
-          return {
-            ...ac,
-          };
+          return arrayNonActiveObject.push({ ...ac });
         }
+        return arrayNonActiveObject;
       });
-      let getfilteredArray = getArray.filter((ac) => ac !== undefined);
+      let getfilteredArray = arrayNonActiveObject.filter(
+        (ac) => ac !== undefined
+      );
       return { ...state, activitiesNonActive: getfilteredArray };
 
     //Adding an activities to the state
@@ -180,10 +181,12 @@ const activitiesReducer = (state = initState, action) => {
       });
       let filteredArr = newArr.filter((ac) => ac !== undefined);
       let decresedTimeArr = [...newArr, ...state.activitiesNonActive];
-      let getNotifiedItem = newArr.map((nA) => {
+      let getNotifiedItem = [];
+      newArr.map((nA) => {
         if (nA.timeSet <= 0) {
-          return nA;
+          return getNotifiedItem.push(nA);
         }
+        return getNotifiedItem;
       });
       let getFilteredNotifiedItem = getNotifiedItem.filter(
         (ac) => ac !== undefined && ac.completed === false
