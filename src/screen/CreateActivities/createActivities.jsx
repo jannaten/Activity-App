@@ -35,11 +35,13 @@ class CreateActivity extends React.Component {
   }
 }
 
+//Calling the state from the reducer
 const mapStateToProps = ({ activities: { setName, timeSet } }) => ({
   setName,
   timeSet,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   handleChange: (ac) => dispatch(handleChange(ac)),
   addActivities: (ac) => dispatch(addActivities(ac)),

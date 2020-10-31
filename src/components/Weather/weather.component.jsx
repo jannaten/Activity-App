@@ -53,6 +53,7 @@ const Weather = ({
   );
 };
 
+//Calling the state from the reducer
 const mapStateToProps = ({
   weather: {
     defaultCity,
@@ -69,6 +70,7 @@ const mapStateToProps = ({
   basicWeatherData,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   changeWeather: (weather) => dispatch(changeWeather(weather)),
   handleWeatherChange: (weather) => dispatch(handleWeatherChange(weather)),

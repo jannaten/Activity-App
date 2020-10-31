@@ -48,12 +48,14 @@ class Suggestions extends React.Component {
   }
 }
 
+//Calling the state from the reducer
 const mapStateToProps = ({ weather: { light, visible, weatherStatus } }) => ({
   light,
   visible,
   weatherStatus,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   toggleLight: () => dispatch(toggleLight()),
   toggleVisible: () => dispatch(toggleVisible()),

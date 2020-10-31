@@ -1,6 +1,7 @@
 import React from "react";
 import { data } from "./descripionData";
 
+//Generate the suggestions
 function descriptionHolder({ desc }) {
   return (
     <>

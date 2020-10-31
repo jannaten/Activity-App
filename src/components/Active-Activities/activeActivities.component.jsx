@@ -79,10 +79,12 @@ const ActiveActivities = ({
   </DragDropContext>
 );
 
+//Calling the state from the reducer
 const mapStateToProps = ({ activities: { activitiesActive } }) => ({
   activitiesActive,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   sortActivities: (activities) => dispatch(sortActivities(activities)),
   setArchriveActivities: (activities) =>

@@ -21,6 +21,7 @@ const Notifications = ({ notifiedItem }) => (
   </>
 );
 
+//Calling the state from the reducer
 const mapStateToProps = ({ activities: { notifiedItem } }) => ({
   notifiedItem,
 });

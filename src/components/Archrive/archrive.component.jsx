@@ -19,6 +19,7 @@ const Archrive = ({ activitiesNonActive }) => (
   </>
 );
 
+//Calling the state from the reducer
 const mapStateToProps = ({ activities: { activitiesNonActive } }) => ({
   activitiesNonActive,
 });

@@ -82,6 +82,7 @@ class DashBoard extends React.Component {
   }
 }
 
+//Calling the state from the reducer
 const mapStateToProps = ({
   weather: { defaultCity },
   activities: { activities },
@@ -90,6 +91,7 @@ const mapStateToProps = ({
   defaultCity,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   setDefined: () => dispatch(setDefined()),
   setDecrementMinutes: () => dispatch(setDecrementMinutes()),

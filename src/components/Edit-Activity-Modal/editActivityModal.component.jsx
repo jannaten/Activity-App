@@ -74,6 +74,7 @@ const EditActivityModal = ({
   </Modal>
 );
 
+//Calling the state from the reducer
 const mapStateToProps = ({
   activities: {
     setId,
@@ -92,6 +93,7 @@ const mapStateToProps = ({
   setCompleted,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   toggleModal: (modal) => dispatch(toggleModal(modal)),
   handleUpdate: (modal) => dispatch(handleUpdate(modal)),

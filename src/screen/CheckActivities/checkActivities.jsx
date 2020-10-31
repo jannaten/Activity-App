@@ -122,11 +122,13 @@ const CheckActivity = ({
   );
 };
 
+//Calling the state from the reducer
 const mapStateToProps = ({ activities: { showModal, activities } }) => ({
   showModal,
   activities,
 });
 
+//Calling the methods from the reducer
 const mapDispatchToProps = (dispatch) => ({
   toggleModal: (activity) => dispatch(toggleModal(activity)),
   deleteActivity: (activity) => dispatch(deleteActivity(activity)),
