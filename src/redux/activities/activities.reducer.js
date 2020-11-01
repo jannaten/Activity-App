@@ -1,5 +1,16 @@
 import { v4 as uuid } from "uuid";
 import { ActivitiesActionTypes as TYPES } from "./activities.types";
+import {
+  items,
+  checkItems,
+  getfilteredArr,
+  editedArrayOne,
+  editedArrayTwo,
+  getfilteredArray,
+  afterDeleteActivityArray,
+  afterDeleteActiveActivityArray,
+  afterDeleteNonActiveActivityArray,
+} from "./activities.utils";
 
 const initState = {
   setId: "",
@@ -39,29 +50,11 @@ const activitiesReducer = (state = initState, action) => {
 
     //Making state for active activities
     case TYPES.SORT_ACTIVE_ACTIVITIES:
-      let arrayActiveObject = [];
-      state.activities.map((ac) => {
-        if (ac.completed !== true) {
-          return arrayActiveObject.push({ ...ac, timeSet: ac.timeSet });
-        }
-        return arrayActiveObject;
-      });
-      let getfilteredArr = arrayActiveObject.filter((ac) => ac !== undefined);
-      return { ...state, activitiesActive: getfilteredArr };
+      return { ...state, activitiesActive: getfilteredArr(state) };
 
     //Making state for active activities
     case TYPES.SORT_NONACTIVE_ACTIVITIES:
-      let arrayNonActiveObject = [];
-      state.activities.map((ac) => {
-        if (ac.completed === true) {
-          return arrayNonActiveObject.push({ ...ac });
-        }
-        return arrayNonActiveObject;
-      });
-      let getfilteredArray = arrayNonActiveObject.filter(
-        (ac) => ac !== undefined
-      );
-      return { ...state, activitiesNonActive: getfilteredArray };
+      return { ...state, activitiesNonActive: getfilteredArray(state) };
 
     //Adding an activities to the state
     case TYPES.ADD_ACTIVITIES:
@@ -92,33 +85,16 @@ const activitiesReducer = (state = initState, action) => {
 
     //Responsible for doing the drag and drop effect in Dashboard
     case TYPES.SORT_ACTIVITIES:
-      const { destination, source } = action.payload;
-      if (!destination) return;
-      const items = Array.from(state.activitiesActive);
-      const [reorderedItem] = items.splice(source.index, 1);
-      items.splice(destination.index, 0, reorderedItem);
       return {
         ...state,
-        activitiesActive: [...items],
+        activitiesActive: items(action, state),
       };
 
     //Responsible for doing drag and drop in Check all Items section
     case TYPES.SORT_CHECK_ACTIVITY:
-      if (!action.payload.destination) return;
-      const checkItems = Array.from(state.activities);
-      const [checkReorderedItem] = checkItems.splice(
-        action.payload.source.index,
-        1
-      );
-
-      checkItems.splice(
-        action.payload.destination.index,
-        0,
-        checkReorderedItem
-      );
       return {
         ...state,
-        activities: [...checkItems],
+        activities: checkItems(action, state),
       };
 
     //Setting the state for archrive activities
@@ -229,14 +205,6 @@ const activitiesReducer = (state = initState, action) => {
         getValue.timeSet !== "" &&
         setValidTime > windowTime
       ) {
-        let editedArray = state.activities.map((ac) => {
-          if (ac.id === getValue.id && ac.completed === false) {
-            ac.name = getValue.name;
-            ac.completed = getValue.completed;
-            ac.timeSet = setValidTime - windowTime;
-          }
-          return ac;
-        });
         return {
           ...state,
           setId: "",
@@ -244,21 +212,13 @@ const activitiesReducer = (state = initState, action) => {
           timeSet: "",
           setValidTime: 0,
           showModal: false,
-          activities: editedArray,
+          activities: editedArrayOne(state, getValue, setValidTime, windowTime),
         };
       } else if (
         !setValidTime &&
         getValue.name !== "" &&
         getValue.timeSet === ""
       ) {
-        let editedArray = state.activities.map((ac) => {
-          if (ac.id === getValue.id && ac.completed === true) {
-            ac.name = getValue.name;
-            ac.completed = getValue.completed;
-            ac.timeSet = NaN;
-          }
-          return ac;
-        });
         return {
           ...state,
           setId: "",
@@ -266,7 +226,7 @@ const activitiesReducer = (state = initState, action) => {
           timeSet: "",
           setValidTime: 0,
           showModal: false,
-          activities: editedArray,
+          activities: editedArrayTwo(state, getValue),
         };
       } else {
         alert("Please choose a upcoming time");
@@ -275,21 +235,11 @@ const activitiesReducer = (state = initState, action) => {
 
     //Remove an activity from the UI
     case TYPES.DELETE_ACTIVITY:
-      const afterDeleteActivityArray = state.activities.filter(
-        (el) => el.id !== action.payload
-      );
-      const afterDeleteActiveActivityArray = state.activitiesActive.filter(
-        (el) => el.id !== action.payload
-      );
-
-      const afterDeleteNonActiveActivityArray = state.activitiesNonActive.filter(
-        (el) => el.id !== action.payload
-      );
       return {
         ...state,
-        activities: afterDeleteActivityArray,
-        activitiesActive: afterDeleteActiveActivityArray,
-        activitiesNonActive: afterDeleteNonActiveActivityArray,
+        activities: afterDeleteActivityArray(state, action),
+        activitiesActive: afterDeleteActiveActivityArray(state, action),
+        activitiesNonActive: afterDeleteNonActiveActivityArray(state, action),
       };
 
     //If no action happens its retruns the states
