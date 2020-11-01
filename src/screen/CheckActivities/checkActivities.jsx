@@ -17,106 +17,122 @@ const CheckActivity = ({
 }) => {
   return (
     <DragDropContext onDragEnd={(value) => sortCheckActivities(value)}>
-      <div>
-        <h2>All activities - total {activities.length} rows</h2>
-        <table>
-          <thead>
-            <tr>
-              {TableHeader.map(({ id, value }) => (
-                <th key={id}>{value}</th>
-              ))}
-            </tr>
-          </thead>
-          {activities.length > 0 ? (
-            <Droppable droppableId="activities">
-              {(provided) => (
-                <tbody {...provided.droppableProps} ref={provided.innerRef}>
-                  {activities.map((ac, index) => (
-                    <Draggable key={ac.id} index={index} draggableId={ac.id}>
-                      {(provided) => (
-                        <tr
-                          key={ac.id}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          {ac.completed ? (
-                            <td style={ActivityStyle.LineThrogh}>{ac.name}</td>
-                          ) : (
-                            <td>{ac.name}</td>
-                          )}
-                          <td>
-                            {ac.completed ? (
-                              <>
-                                <div style={ActivityStyle.Container}>
-                                  <div style={ActivityStyle.listChildOne}></div>
-                                  <span>Task accomplished</span>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div style={ActivityStyle.Container}>
-                                  <div style={ActivityStyle.listChildTwo}></div>
-                                  <span>Task ongoing</span>
-                                </div>
-                              </>
-                            )}
-                          </td>
-                          <td>
-                            {ac.timeSet ? (
-                              <>
-                                {ac.timeSet > 1 ? (
-                                  <span>{ac.timeSet} minutes</span>
-                                ) : (
-                                  <span>{ac.timeSet} minute</span>
-                                )}
-                              </>
-                            ) : (
-                              <span>0 minute</span>
-                            )}
-                          </td>
-                          <td>
-                            <div
-                              style={ActivityStyle.ButtonRoundStyle}
-                              onClick={() =>
-                                toggleModal({
-                                  setId: ac.id,
-                                  showModal: !showModal,
-                                  setValidTime: ac.timeSet,
-                                  setCompleted: ac.completed,
-                                })
-                              }
-                            >
-                              <i className="fas fa-pen"></i>
-                            </div>
-                            <EditActivityModal />
-                          </td>
-                          <td>
-                            <div
-                              style={ActivityStyle.ButtonRoundStyle}
-                              onClick={() => deleteActivity(ac.id)}
-                            >
-                              <i className="fas fa-trash"></i>
-                            </div>
-                          </td>
-                        </tr>
-                      )}
-                    </Draggable>
+      <div className="moveTable">
+        {activities !== undefined ? (
+          <>
+            <h2>All activities - total {activities.length} rows</h2>
+            <table>
+              <thead>
+                <tr>
+                  {TableHeader.map(({ id, value }) => (
+                    <th key={id}>{value}</th>
                   ))}
-                  {provided.placeholder}
-                </tbody>
-              )}
-            </Droppable>
-          ) : null}
-        </table>
-        {activities.length === 0 ? (
-          <div>
-            <p>No activites yet.</p>
-            <Link to={{ pathname: "/create" }}>
-              <CustomButton>Add Activity</CustomButton>
-            </Link>
-          </div>
-        ) : null}
+                </tr>
+              </thead>
+              {activities.length > 0 ? (
+                <Droppable droppableId="activities">
+                  {(provided) => (
+                    <tbody {...provided.droppableProps} ref={provided.innerRef}>
+                      {activities.map((ac, index) => (
+                        <Draggable
+                          key={ac.id}
+                          index={index}
+                          draggableId={ac.id}
+                        >
+                          {(provided) => (
+                            <tr
+                              key={ac.id}
+                              ref={provided.innerRef}
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                            >
+                              {ac.completed ? (
+                                <td style={ActivityStyle.LineThrogh}>
+                                  {ac.name}
+                                </td>
+                              ) : (
+                                <td>{ac.name}</td>
+                              )}
+                              <td>
+                                {ac.completed ? (
+                                  <>
+                                    <div style={ActivityStyle.Container}>
+                                      <div
+                                        style={ActivityStyle.listChildOne}
+                                      ></div>
+                                      <span>Task accomplished</span>
+                                    </div>
+                                  </>
+                                ) : (
+                                  <>
+                                    <div style={ActivityStyle.Container}>
+                                      <div
+                                        style={ActivityStyle.listChildTwo}
+                                      ></div>
+                                      <span>Task ongoing</span>
+                                    </div>
+                                  </>
+                                )}
+                              </td>
+                              <td>
+                                {ac.timeSet ? (
+                                  <>
+                                    {ac.timeSet > 1 ? (
+                                      <span>{ac.timeSet} minutes</span>
+                                    ) : (
+                                      <span>{ac.timeSet} minute</span>
+                                    )}
+                                  </>
+                                ) : (
+                                  <span>0 minute</span>
+                                )}
+                              </td>
+                              <td>
+                                <div
+                                  style={ActivityStyle.ButtonRoundStyle}
+                                  onClick={() =>
+                                    toggleModal({
+                                      setId: ac.id,
+                                      showModal: !showModal,
+                                      setValidTime: ac.timeSet,
+                                      setCompleted: ac.completed,
+                                    })
+                                  }
+                                >
+                                  <i className="fas fa-pen"></i>
+                                </div>
+                                <EditActivityModal />
+                              </td>
+                              <td>
+                                <div
+                                  style={ActivityStyle.ButtonRoundStyle}
+                                  onClick={() => deleteActivity(ac.id)}
+                                >
+                                  <i className="fas fa-trash"></i>
+                                </div>
+                              </td>
+                            </tr>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </tbody>
+                  )}
+                </Droppable>
+              ) : null}
+            </table>
+            {activities.length === 0 ? (
+              <div>
+                <p>No activites yet.</p>
+                <Link to={{ pathname: "/Activity-App/create" }}>
+                  <CustomButton>Add Activity</CustomButton>
+                </Link>
+              </div>
+            ) : null}
+          </>
+        ) : (
+          window.location.reload()
+        )}
       </div>
     </DragDropContext>
   );

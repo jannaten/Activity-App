@@ -22,11 +22,11 @@ class DashBoard extends React.Component {
     try {
       const { defaultCity } = this.props;
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${API_KEY}`
       );
       const mainTemp = response.data.main;
       const weatherStatus = response.data.weather[0];
-      this.props.getWeatherData({
+      await this.props.getWeatherData({
         weatherReport: response.data,
         basicWeatherData: mainTemp,
         weatherStatus,

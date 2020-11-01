@@ -18,6 +18,7 @@ const EditActivityModal = ({
 }) => (
   <Modal
     show={showModal}
+    className="setView"
     closeCallback={() =>
       toggleModal({
         showModal: !showModal,

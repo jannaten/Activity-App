@@ -4,13 +4,13 @@ import MenuListHolder from "../styles";
 const MenuList = ({ style }) => {
   return (
     <ul style={style}>
-      <Link to={{ pathname: "/" }}>
+      <Link to={{ pathname: "/Activity-App/" }}>
         <li style={MenuListHolder.menuListStyle}>Dashboard</li>
       </Link>
-      <Link to={{ pathname: "/create" }}>
+      <Link to={{ pathname: "/Activity-App/create" }}>
         <li style={MenuListHolder.menuListStyle}>Create Activities</li>
       </Link>
-      <Link to={{ pathname: "check" }}>
+      <Link to={{ pathname: "/Activity-App/check" }}>
         <li style={MenuListHolder.menuListStyle}>Check all activities</li>
       </Link>
     </ul>

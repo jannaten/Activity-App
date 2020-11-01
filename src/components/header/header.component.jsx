@@ -3,7 +3,6 @@ import { MobileList, MenuList } from "../";
 import { Link } from "react-router-dom";
 import HeaderStyle from "../styles";
 import "./header.styles.scss";
-
 const Header = () => {
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width : 680px)").matches
@@ -17,7 +16,7 @@ const Header = () => {
 
   return (
     <nav className="tracker" style={HeaderStyle.navStyle}>
-      <Link to={{ pathname: "/" }}>
+      <Link to={{ pathname: "/Activity-App/" }}>
         <strong>
           <span className="header">activity</span>
         </strong>

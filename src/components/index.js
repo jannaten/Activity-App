@@ -1,6 +1,7 @@
 export { default as Header } from "./header/header.component";
 export { default as Weather } from "./Weather/weather.component";
 export { default as Archrive } from "./Archrive/archrive.component";
+export { default as MenuList } from "./Menu-List/menu-list.component";
 export { default as FormInput } from "./Form-Input/form-input.component";
 export { default as Suggestions } from "./Suggestion/suggestion.component";
 export { default as MobileList } from "./Mobile-List/mobile-list.component";
@@ -9,4 +10,3 @@ export { default as Notifications } from "./Notifications/notifications.componen
 export { default as ListDropDown } from "./List-Drop-Down/list-drop-down.component";
 export { default as ActiveActivities } from "./Active-Activities/activeActivities.component";
 export { default as EditActivityModal } from "./Edit-Activity-Modal/editActivityModal.component";
-export { default as MenuList } from "./Menu-List/menu-list.component";

@@ -18,7 +18,6 @@ class Suggestions extends React.Component {
 
   render() {
     const { visible, weatherStatus, light } = this.props;
-    console.log(typeof weatherStatus.description);
     return (
       <>
         {weatherStatus.description !== undefined ? (

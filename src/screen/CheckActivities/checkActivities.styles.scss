@@ -48,3 +48,12 @@ tr:nth-child(even) {
   text-decoration: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 500px) {
+  .moveTable {
+    margin-right: 5rem;
+  }
+  .modal_content {
+    margin-left: 10%;
+  }
+}

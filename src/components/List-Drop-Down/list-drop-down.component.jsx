@@ -5,17 +5,17 @@ import ListHolder from "../styles";
 const ListDropDown = ({ style, setActive }) => {
   return (
     <ul style={style}>
-      <Link to={{ pathname: "/" }}>
+      <Link to={{ pathname: "/Activity-App/" }}>
         <li style={ListHolder.listStyle} onClick={() => setActive(false)}>
           Dashboard
         </li>
       </Link>
-      <Link to={{ pathname: "/create" }}>
+      <Link to={{ pathname: "/Activity-App/create" }}>
         <li style={ListHolder.listStyle} onClick={() => setActive(false)}>
           Create Activities
         </li>
       </Link>
-      <Link to={{ pathname: "check" }}>
+      <Link to={{ pathname: "/Activity-App/check" }}>
         <li style={ListHolder.listStyle} onClick={() => setActive(false)}>
           Check all activities
         </li>

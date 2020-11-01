@@ -12,69 +12,73 @@ const ActiveActivities = ({
 }) => (
   <DragDropContext onDragEnd={(value) => sortActivities(value)}>
     <h3>Activities on process</h3>
-    {activitiesActive.length > 0 ? (
-      <Droppable droppableId="activities">
-        {(provided) => (
-          <div {...provided.droppableProps} ref={provided.innerRef}>
-            {activitiesActive.map((ac, index) => {
-              const { id, name, timeSet, completed } = ac;
-              return (
-                <Draggable key={id} index={index} draggableId={id}>
-                  {(provided) => (
-                    <div
-                      key={id}
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      {!completed ? (
-                        <div>
-                          <h4>{name}</h4>
-                          {timeSet >= 0 ? (
-                            <p>
-                              {timeSet}{" "}
-                              {timeSet === 1 || timeSet === 0 ? (
-                                <span>minute</span>
-                              ) : (
-                                <span>minutes</span>
-                              )}{" "}
-                              to go
-                            </p>
-                          ) : (
-                            <p>
-                              You are {Math.abs(timeSet)}{" "}
-                              {Math.abs(timeSet) === 1 ? (
-                                <span>minute</span>
-                              ) : (
-                                <span>minutes</span>
-                              )}{" "}
-                              late
-                            </p>
-                          )}
-                          <CustomButton
-                            onClick={() => setArchriveActivities(id)}
-                          >
-                            Move to Archive
-                          </CustomButton>
-                        </div>
-                      ) : null}
-                    </div>
-                  )}
-                </Draggable>
-              );
-            })}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
-    ) : (
+    {activitiesActive !== undefined ? (
       <>
-        <h4>No more active projects</h4>
-        <Link to={{ pathname: "/create" }}>
-          <CustomButton>Add Activity</CustomButton>
-        </Link>
+        {activitiesActive.length > 0 ? (
+          <Droppable droppableId="activities">
+            {(provided) => (
+              <div {...provided.droppableProps} ref={provided.innerRef}>
+                {activitiesActive.map((ac, index) => {
+                  const { id, name, timeSet, completed } = ac;
+                  return (
+                    <Draggable key={id} index={index} draggableId={id}>
+                      {(provided) => (
+                        <div
+                          key={id}
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                          {!completed ? (
+                            <div>
+                              <h4>{name}</h4>
+                              {timeSet >= 0 ? (
+                                <p>
+                                  {timeSet}{" "}
+                                  {timeSet === 1 || timeSet === 0 ? (
+                                    <span>minute</span>
+                                  ) : (
+                                    <span>minutes</span>
+                                  )}{" "}
+                                  to go
+                                </p>
+                              ) : (
+                                <p>
+                                  You are {Math.abs(timeSet)}{" "}
+                                  {Math.abs(timeSet) === 1 ? (
+                                    <span>minute</span>
+                                  ) : (
+                                    <span>minutes</span>
+                                  )}{" "}
+                                  late
+                                </p>
+                              )}
+                              <CustomButton
+                                onClick={() => setArchriveActivities(id)}
+                              >
+                                Move to Archive
+                              </CustomButton>
+                            </div>
+                          ) : null}
+                        </div>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        ) : (
+          <>
+            <h4>No more active projects</h4>
+            <Link to={{ pathname: "/Activity-App/create" }}>
+              <CustomButton>Add Activity</CustomButton>
+            </Link>
+          </>
+        )}
       </>
-    )}
+    ) :  window.location.reload()}
   </DragDropContext>
 );
 
