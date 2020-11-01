@@ -18,3 +18,15 @@
   background-color: white;
   flex: 1;
 }
+
+@media only screen and (max-width: 600px) {
+  .child-container-1 {
+    margin-right: 50px;
+  }
+  .child-container-2 {
+    margin-right: 50px;
+  }
+  .child-container-3 {
+    margin-right: 50px;
+  }
+}
