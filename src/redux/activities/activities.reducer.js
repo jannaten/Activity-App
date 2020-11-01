@@ -1,45 +1,11 @@
 import { v4 as uuid } from "uuid";
+import { initState } from "./activities.state";
 import { ActivitiesActionTypes as TYPES } from "./activities.types";
-import {
-  items,
-  checkItems,
-  getfilteredArr,
-  editedArrayOne,
-  editedArrayTwo,
-  getfilteredArray,
-  afterDeleteActivityArray,
-  afterDeleteActiveActivityArray,
-  afterDeleteNonActiveActivityArray,
-} from "./activities.utils";
-
-const initState = {
-  setId: "",
-  setName: "",
-  setCompleted: "",
-  setValidTime: "",
-  showModal: false,
-  notifiedItem: [],
-  activitiesActive: [],
-  activitiesNonActive: [],
-  timeSet: new Date().getHours() + ":" + new Date().getMinutes(),
-  activities: [
-    {
-      id: uuid(),
-      name: "Running",
-      completed: false,
-      timeSet:
-        Number("00:03".split(":")[0]) * 60 + Number("00:03".split(":")[1]),
-    },
-    { id: uuid(), name: "Cooking", completed: true, timeSet: NaN },
-    {
-      id: uuid(),
-      name: "Sleeping",
-      completed: false,
-      timeSet:
-        Number("00:05".split(":")[0]) * 60 + Number("00:05".split(":")[1]),
-    },
-  ],
-};
+import { editedArrayOne, editedArrayTwo } from "./activities.utils";
+import { afterDeleteActiveActivityArray } from "./activities.utils";
+import { items, checkItems, getfilteredArr } from "./activities.utils";
+import { afterDeleteNonActiveActivityArray } from "./activities.utils";
+import { afterDeleteActivityArray, getfilteredArray } from "./activities.utils";
 
 const activitiesReducer = (state = initState, action) => {
   switch (action.type) {

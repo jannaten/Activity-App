@@ -1,15 +1,5 @@
-import { DEFAULT_CITY } from "../../constant";
+import { initState } from "./weather.state";
 import { WeatherActionTypes as TYPES } from "./weather.types";
-
-const initState = {
-  visible: false,
-  light: "Night",
-  givenCityName: "",
-  weatherReport: {},
-  weatherStatus: {},
-  basicWeatherData: {},
-  defaultCity: DEFAULT_CITY,
-};
 
 const weatherReducer = (state = initState, action) => {
   switch (action.type) {
