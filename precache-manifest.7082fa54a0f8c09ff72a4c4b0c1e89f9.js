@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "64e63fbaecae80d18fa7954413f95da8",
+    "revision": "bdf1fe53c567817d00f47a805c88a06c",
     "url": "/Activity-App/index.html"
   },
   {
-    "revision": "f68720f1022118ba58f9",
+    "revision": "96de50b7c5b4dbac85c1",
     "url": "/Activity-App/static/css/main.eb244c84.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Activity-App/static/js/2.a7206920.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f68720f1022118ba58f9",
-    "url": "/Activity-App/static/js/main.af8bff32.chunk.js"
+    "revision": "96de50b7c5b4dbac85c1",
+    "url": "/Activity-App/static/js/main.e49aacc0.chunk.js"
   },
   {
     "revision": "eb94641ae2330a1b9570",
