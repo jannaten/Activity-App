@@ -5,7 +5,7 @@ export default {
   },
   buttonSpace: { marginRight: "1rem" },
   listStyle: {
-    textAlign: "left",
+    textAlign: "center ",
     background: "black",
     marginBotton: "8px",
     padding: "5px",
@@ -14,8 +14,8 @@ export default {
   },
   listSet: {
     position: "absolute",
-    right: "5px",
-    top: "8%",
+    right: "12%",
+    top: "10%",
     listStyle: "none",
   },
   menuListStyle: { textAlign: "left", paddingRight: "1rem", cursor: "pointer" },
