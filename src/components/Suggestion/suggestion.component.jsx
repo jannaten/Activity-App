@@ -1,5 +1,4 @@
 import React from "react";
-import "./suggestion.styles.scss";
 import { connect } from "react-redux";
 import { toggleVisible, toggleLight } from "../../redux/";
 import DescriptionHolder from "../../utils/descriptionHolder";
@@ -19,30 +18,37 @@ class Suggestions extends React.Component {
 
   render() {
     const { visible, weatherStatus, light } = this.props;
+    console.log(typeof weatherStatus.description);
     return (
       <>
-        <h3>Suggestions</h3>
-        {visible ? (
+        {weatherStatus.description !== undefined ? (
           <>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <img
-                src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
-                alt=""
-              />
-              <h4>{weatherStatus.description}</h4>({" "}
-              {weatherStatus ? <h4> {light} </h4> : null})
-            </div>
-            <DescriptionHolder desc={weatherStatus.description.toLowerCase()} />
+            <h3>Suggestions</h3>
+            {visible ? (
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
+                    alt=""
+                  />
+                  <h4>{weatherStatus.description}</h4>({" "}
+                  {weatherStatus ? <h4> {light} </h4> : null})
+                </div>
+                <DescriptionHolder
+                  desc={weatherStatus.description.toLowerCase()}
+                />
+              </>
+            ) : (
+              <p>No suggestions at this moment</p>
+            )}
           </>
-        ) : (
-          <p>No suggestions at this moment</p>
-        )}
+        ) : null}
       </>
     );
   }

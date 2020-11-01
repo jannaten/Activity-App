@@ -1,5 +1,4 @@
 import React from "react";
-import "./weather.styles.scss";
 import { connect } from "react-redux";
 import { FormInput, CustomButton } from "../";
 import { changeWeather, handleWeatherChange } from "../../redux/";

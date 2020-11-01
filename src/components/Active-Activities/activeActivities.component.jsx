@@ -2,7 +2,6 @@ import React from "react";
 import { CustomButton } from "../";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import "./activeActivities.styles.scss";
 import { sortActivities, setArchriveActivities } from "../../redux/";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 

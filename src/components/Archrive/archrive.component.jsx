@@ -1,5 +1,4 @@
 import React from "react";
-import "./archrive.styles.scss";
 import { connect } from "react-redux";
 
 const Archrive = ({ activitiesNonActive }) => (

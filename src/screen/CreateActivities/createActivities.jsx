@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./createActivities.styles.scss";
 import { addActivities, handleChange } from "../../redux/";
 import { FormInput, CustomButton } from "../../components/";
 

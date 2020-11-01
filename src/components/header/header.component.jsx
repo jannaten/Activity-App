@@ -1,24 +1,24 @@
-import React from "react";
-import "./header.styles.scss";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { MobileList, MenuList } from "../";
+import HeaderStyle from "../styles";
 
-const Header = () => (
-  <div className="header">
-    <Link className="logo-container" to="/">
+const Header = () => {
+  const [isMobile, setIsMobile] = useState(
+    window.matchMedia("(max-width : 680px)").matches
+  );
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setIsMobile(window.matchMedia("(max-width : 680px)").matches);
+    });
+  });
+
+  return (
+    <nav style={HeaderStyle.navStyle}>
       <strong>ACTIVITY</strong>
-    </Link>
-    <div className="options">
-      <Link className="option" to="/">
-        Dashboard
-      </Link>
-      <Link className="option" to="/create">
-        Create activities
-      </Link>
-      <Link className="option" to="/check">
-        Check all activities
-      </Link>
-    </div>
-  </div>
-);
+      {isMobile ? <MobileList /> : <MenuList style={HeaderStyle.menuStyle} />}
+    </nav>
+  );
+};
 
 export default Header;
