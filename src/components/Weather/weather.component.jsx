@@ -4,6 +4,7 @@ import { FormInput, CustomButton } from "../";
 import { changeWeather, handleWeatherChange } from "../../redux/";
 
 const Weather = ({
+  isPending,
   weatherReport,
   weatherStatus,
   givenCityName,
@@ -11,7 +12,6 @@ const Weather = ({
   basicWeatherData,
   handleWeatherChange,
 }) => {
-  const wR = Object.keys(weatherReport);
   const {
     temp,
     temp_min,
@@ -23,7 +23,7 @@ const Weather = ({
   const { name } = weatherReport;
   return (
     <>
-      {wR.length > 0 ? (
+      {!isPending ? (
         <>
           <h3>
             Weather in {name} : {(temp - 273).toFixed(2)} °C
@@ -55,6 +55,7 @@ const Weather = ({
 //Calling the state from the reducer
 const mapStateToProps = ({
   weather: {
+    isPending,
     defaultCity,
     givenCityName,
     weatherReport,
@@ -62,6 +63,7 @@ const mapStateToProps = ({
     basicWeatherData,
   },
 }) => ({
+  isPending,
   defaultCity,
   givenCityName,
   weatherReport,

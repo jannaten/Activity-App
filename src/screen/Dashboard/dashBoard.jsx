@@ -1,12 +1,10 @@
 import React from "react";
-import axios from "axios";
 import "./dashBoard.styles.scss";
 import { connect } from "react-redux";
-import { API_KEY } from "../../constant";
 import { Weather, Archrive, Suggestions } from "../../components/";
 import { Notifications, ActiveActivities } from "../../components/";
 import { sortActiveActivities, sortNonActiveActivities } from "../../redux/";
-import { setDefined, setDecrementMinutes, getWeatherData } from "../../redux/";
+import { setDefined, setDecrementMinutes, mountWeather } from "../../redux/";
 
 class DashBoard extends React.Component {
   componentDidMount() {
@@ -15,33 +13,15 @@ class DashBoard extends React.Component {
     setInterval(() => {
       this.props.setDecrementMinutes();
     }, 60000);
-    this.getWeather();
+    this.props.mountWeather(this.props.defaultCity, this.props.API_KEY);
   }
-
-  getWeather = async () => {
-    try {
-      const { defaultCity } = this.props;
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${defaultCity}&appid=${API_KEY}`
-      );
-      const mainTemp = response.data.main;
-      const weatherStatus = response.data.weather[0];
-      await this.props.getWeatherData({
-        weatherReport: response.data,
-        basicWeatherData: mainTemp,
-        weatherStatus,
-      });
-    } catch (e) {
-      alert("City doesnot found, try another city");
-    }
-  };
 
   componentDidUpdate(pP, pS, SS) {
     if (typeof pP.activities !== typeof this.props.activities) {
       this.props.setDefined();
     }
     if (pP.defaultCity !== this.props.defaultCity) {
-      this.getWeather();
+      this.props.mountWeather(this.props.defaultCity, this.props.API_KEY);
     }
   }
 
@@ -83,9 +63,10 @@ class DashBoard extends React.Component {
 
 //Calling the state from the reducer
 const mapStateToProps = ({
-  weather: { defaultCity },
   activities: { activities },
+  weather: { defaultCity, API_KEY },
 }) => ({
+  API_KEY,
   activities,
   defaultCity,
 });
@@ -95,8 +76,8 @@ const mapDispatchToProps = (dispatch) => ({
   setDefined: () => dispatch(setDefined()),
   setDecrementMinutes: () => dispatch(setDecrementMinutes()),
   sortActiveActivities: () => dispatch(sortActiveActivities()),
-  getWeatherData: (weather) => dispatch(getWeatherData(weather)),
   sortNonActiveActivities: () => dispatch(sortNonActiveActivities()),
+  mountWeather: (city, API_KEY) => dispatch(mountWeather(city, API_KEY)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashBoard);

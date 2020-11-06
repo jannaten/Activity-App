@@ -3,11 +3,6 @@ import { WeatherActionTypes as TYPES } from "./weather.types";
 
 const weatherReducer = (state = initState, action) => {
   switch (action.type) {
-    //Get the data and set it in the state
-    case TYPES.GET_WEATHER:
-      const { basicWeatherData, weatherStatus, weatherReport } = action.payload;
-      return { ...state, basicWeatherData, weatherStatus, weatherReport };
-
     //Changing the state with the defaultCityName state
     case TYPES.HANDLE_CHANGE:
       const { value, name } = action.payload.target;
@@ -32,6 +27,27 @@ const weatherReducer = (state = initState, action) => {
       } else {
         return { ...state, light: "" };
       }
+
+    //Check the fetching respond
+    case TYPES.REQUEST_WEATHER_PENDING:
+      return { ...state, isPending: true };
+
+    //Get the weather data and set it in the state
+    case TYPES.REQUEST_WEATHER_SUCCESS:
+      const mainTemp = action.payload.main;
+      const weatherStatus = action.payload.weather[0];
+      return {
+        ...state,
+        weatherStatus,
+        isPending: false,
+        basicWeatherData: mainTemp,
+        weatherReport: action.payload,
+      };
+
+    //Handle the error
+    case TYPES.REQUEST_WEATHER_FAILED:
+      alert("City doesn't found");
+      return { ...state, isPending: true };
 
     //If no action happens its retruns the states
     default:
