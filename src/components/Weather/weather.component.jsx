@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { FormInput, CustomButton } from "../";
+import { FormInput, CustomButton, Loader } from "../";
 import { changeWeather, handleWeatherChange } from "../../redux/";
 
 const Weather = ({
@@ -46,7 +46,7 @@ const Weather = ({
           <CustomButton onClick={changeWeather}>Change</CustomButton>
         </>
       ) : (
-        <div>Cannot fetch weather data</div>
+        <Loader />
       )}
     </>
   );

@@ -47,7 +47,7 @@ const weatherReducer = (state = initState, action) => {
     //Handle the error
     case TYPES.REQUEST_WEATHER_FAILED:
       alert("City doesn't found");
-      return { ...state, isPending: true };
+      return { ...state, isPending: false };
 
     //If no action happens its retruns the states
     default:

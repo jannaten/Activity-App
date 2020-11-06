@@ -10,3 +10,4 @@ export { default as Notifications } from "./Notifications/notifications.componen
 export { default as ListDropDown } from "./List-Drop-Down/list-drop-down.component";
 export { default as ActiveActivities } from "./Active-Activities/activeActivities.component";
 export { default as EditActivityModal } from "./Edit-Activity-Modal/editActivityModal.component";
+export { default as Loader } from "./Loader/loader.component";
