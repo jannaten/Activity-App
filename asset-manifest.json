@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Activity-App/static/css/main.204ac44f.chunk.css",
-    "main.js": "/Activity-App/static/js/main.a878af15.chunk.js",
-    "main.js.map": "/Activity-App/static/js/main.a878af15.chunk.js.map",
+    "main.css": "/Activity-App/static/css/main.cfed71df.chunk.css",
+    "main.js": "/Activity-App/static/js/main.fedab611.chunk.js",
+    "main.js.map": "/Activity-App/static/js/main.fedab611.chunk.js.map",
     "runtime-main.js": "/Activity-App/static/js/runtime-main.375469d0.js",
     "runtime-main.js.map": "/Activity-App/static/js/runtime-main.375469d0.js.map",
-    "static/js/2.609cdb81.chunk.js": "/Activity-App/static/js/2.609cdb81.chunk.js",
-    "static/js/2.609cdb81.chunk.js.map": "/Activity-App/static/js/2.609cdb81.chunk.js.map",
+    "static/js/2.3504ed8f.chunk.js": "/Activity-App/static/js/2.3504ed8f.chunk.js",
+    "static/js/2.3504ed8f.chunk.js.map": "/Activity-App/static/js/2.3504ed8f.chunk.js.map",
     "index.html": "/Activity-App/index.html",
-    "precache-manifest.2888649c68d7b4faa4e5d58c7e288e7d.js": "/Activity-App/precache-manifest.2888649c68d7b4faa4e5d58c7e288e7d.js",
+    "precache-manifest.8944046a4cbb7845cebea8c88bbfa2d8.js": "/Activity-App/precache-manifest.8944046a4cbb7845cebea8c88bbfa2d8.js",
     "service-worker.js": "/Activity-App/service-worker.js",
-    "static/css/main.204ac44f.chunk.css.map": "/Activity-App/static/css/main.204ac44f.chunk.css.map",
-    "static/js/2.609cdb81.chunk.js.LICENSE.txt": "/Activity-App/static/js/2.609cdb81.chunk.js.LICENSE.txt"
+    "static/css/main.cfed71df.chunk.css.map": "/Activity-App/static/css/main.cfed71df.chunk.css.map",
+    "static/js/2.3504ed8f.chunk.js.LICENSE.txt": "/Activity-App/static/js/2.3504ed8f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.375469d0.js",
-    "static/js/2.609cdb81.chunk.js",
-    "static/css/main.204ac44f.chunk.css",
-    "static/js/main.a878af15.chunk.js"
+    "static/js/2.3504ed8f.chunk.js",
+    "static/css/main.cfed71df.chunk.css",
+    "static/js/main.fedab611.chunk.js"
   ]
 }
