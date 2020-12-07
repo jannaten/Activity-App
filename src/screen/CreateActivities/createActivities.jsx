@@ -3,36 +3,29 @@ import { connect } from "react-redux";
 import { addActivities, handleChange } from "../../redux/";
 import { FormInput, CustomButton } from "../../components/";
 
-class CreateActivity extends React.Component {
-  render() {
-    const { handleChange, setName, timeSet, addActivities } = this.props;
-    return (
-      <div className="container">
-        <div>
-          <h1>Add an activities</h1>
-          <FormInput
-            type="text"
-            name="setName"
-            value={setName}
-            handleChange={handleChange}
-            label={`Give a activity name`}
-            required
-          />
-          <FormInput
-            type="time"
-            name="timeSet"
-            value={timeSet}
-            handleChange={handleChange}
-            required
-          />
-          <CustomButton onClick={(event) => addActivities(event)}>
-            Add
-          </CustomButton>
-        </div>
-      </div>
-    );
-  }
-}
+const CreateActivity = ({ handleChange, setName, timeSet, addActivities }) => (
+  <div className="container">
+    <div>
+      <h1>Add an activities</h1>
+      <FormInput
+        type="text"
+        name="setName"
+        value={setName}
+        handleChange={handleChange}
+        label={`Give a activity name`}
+        required
+      />
+      <FormInput
+        type="time"
+        name="timeSet"
+        value={timeSet}
+        handleChange={handleChange}
+        required
+      />
+      <CustomButton onClick={(event) => addActivities(event)}>Add</CustomButton>
+    </div>
+  </div>
+);
 
 //Calling the state from the reducer
 const mapStateToProps = ({ activities: { setName, timeSet } }) => ({

@@ -78,7 +78,9 @@ const ActiveActivities = ({
           </>
         )}
       </>
-    ) :  window.location.reload()}
+    ) : (
+      window.location.reload()
+    )}
   </DragDropContext>
 );
 

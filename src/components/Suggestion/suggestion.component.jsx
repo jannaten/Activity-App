@@ -1,56 +1,51 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { toggleVisible, toggleLight } from "../../redux/";
 import DescriptionHolder from "../../utils/descriptionHolder";
 
-class Suggestions extends React.Component {
-  componentDidMount() {
+function Suggestions({ light, visible, toggleVisible, weatherStatus }) {
+  useEffect(() => {
     setTimeout(() => {
-      this.props.toggleVisible();
+      toggleVisible();
     }, 5000);
-  }
+  });
 
-  componentDidUpdate(pP, pS, PP) {
-    if (pP.weatherStatus.icon !== this.props.weatherStatus.icon) {
-      this.props.toggleLight();
-    }
-  }
+  useEffect(() => {
+    toggleLight();
+  }, [weatherStatus.icon]);
 
-  render() {
-    const { visible, weatherStatus, light } = this.props;
-    return (
-      <>
-        {weatherStatus.description !== undefined ? (
-          <>
-            <h3>Suggestions</h3>
-            {visible ? (
-              <>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                  }}
-                >
-                  <img
-                    src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
-                    alt=""
-                  />
-                  <h4>{weatherStatus.description}</h4>({" "}
-                  {weatherStatus ? <h4> {light} </h4> : null})
-                </div>
-                <DescriptionHolder
-                  desc={weatherStatus.description.toLowerCase()}
+  return (
+    <>
+      {weatherStatus.description !== undefined ? (
+        <>
+          <h3>Suggestions</h3>
+          {visible ? (
+            <>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src={`http://openweathermap.org/img/wn/${weatherStatus.icon}@2x.png`}
+                  alt=""
                 />
-              </>
-            ) : (
-              <p>No suggestions at this moment</p>
-            )}
-          </>
-        ) : null}
-      </>
-    );
-  }
+                <h4>{weatherStatus.description}</h4>({" "}
+                {weatherStatus ? <h4> {light} </h4> : null})
+              </div>
+              <DescriptionHolder
+                desc={weatherStatus.description.toLowerCase()}
+              />
+            </>
+          ) : (
+            <p>No suggestions at this moment</p>
+          )}
+        </>
+      ) : null}
+    </>
+  );
 }
 
 //Calling the state from the reducer
