@@ -1,7 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { FormInput, CustomButton, Loader } from "../";
 import { changeWeather, handleWeatherChange } from "../../redux/";
+import { selectDefaultCity, selectGivenCityName } from "../../redux/";
+import { selectIsPending, selectBasicWeatherData } from "../../redux/";
+import { selectWeatherReport, selectWeatherStatus } from "../../redux/";
 
 const Weather = ({
   isPending,
@@ -53,22 +57,13 @@ const Weather = ({
 };
 
 //Calling the state from the reducer
-const mapStateToProps = ({
-  weather: {
-    isPending,
-    defaultCity,
-    givenCityName,
-    weatherReport,
-    weatherStatus,
-    basicWeatherData,
-  },
-}) => ({
-  isPending,
-  defaultCity,
-  givenCityName,
-  weatherReport,
-  weatherStatus,
-  basicWeatherData,
+const mapStateToProps = createStructuredSelector({
+  isPending: selectIsPending,
+  defaultCity: selectDefaultCity,
+  givenCityName: selectGivenCityName,
+  weatherReport: selectWeatherReport,
+  weatherStatus: selectWeatherStatus,
+  basicWeatherData: selectBasicWeatherData,
 });
 
 //Calling the methods from the reducer

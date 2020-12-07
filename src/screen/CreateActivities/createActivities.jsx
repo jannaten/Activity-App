@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { addActivities, handleChange } from "../../redux/";
+import { selectSetName, selectTimeSet } from "../../redux/";
 import { FormInput, CustomButton } from "../../components/";
 
 const CreateActivity = ({ handleChange, setName, timeSet, addActivities }) => (
@@ -28,9 +30,9 @@ const CreateActivity = ({ handleChange, setName, timeSet, addActivities }) => (
 );
 
 //Calling the state from the reducer
-const mapStateToProps = ({ activities: { setName, timeSet } }) => ({
-  setName,
-  timeSet,
+const mapStateToProps = createStructuredSelector({
+  setName: selectSetName,
+  timeSet: selectTimeSet,
 });
 
 //Calling the methods from the reducer

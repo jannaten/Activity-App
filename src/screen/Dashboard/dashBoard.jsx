@@ -1,10 +1,12 @@
 import React from "react";
 import "./dashBoard.styles.scss";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { Weather, Archrive, Suggestions } from "../../components/";
 import { Notifications, ActiveActivities } from "../../components/";
 import { sortActiveActivities, sortNonActiveActivities } from "../../redux/";
-import { setDefined, setDecrementMinutes, mountWeather } from "../../redux/";
+import { selectActivities, selectDefaultCity, setDefined } from "../../redux/";
+import { selectAPI_KEY, setDecrementMinutes, mountWeather } from "../../redux/";
 
 class DashBoard extends React.Component {
   componentDidMount() {
@@ -62,13 +64,10 @@ class DashBoard extends React.Component {
 }
 
 //Calling the state from the reducer
-const mapStateToProps = ({
-  activities: { activities },
-  weather: { defaultCity, API_KEY },
-}) => ({
-  API_KEY,
-  activities,
-  defaultCity,
+const mapStateToProps = createStructuredSelector({
+  API_KEY: selectAPI_KEY,
+  activities: selectActivities,
+  defaultCity: selectDefaultCity,
 });
 
 //Calling the methods from the reducer

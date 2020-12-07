@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectActivitiesNonActive } from "../../redux/";
 
 const Archrive = ({ activitiesNonActive }) => (
   <>
@@ -19,8 +21,8 @@ const Archrive = ({ activitiesNonActive }) => (
 );
 
 //Calling the state from the reducer
-const mapStateToProps = ({ activities: { activitiesNonActive } }) => ({
-  activitiesNonActive,
+const mapStateToProps = createStructuredSelector({
+  activitiesNonActive: selectActivitiesNonActive,
 });
 
 export default connect(mapStateToProps)(Archrive);

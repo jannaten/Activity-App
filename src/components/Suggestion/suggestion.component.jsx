@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
 import { toggleVisible, toggleLight } from "../../redux/";
 import DescriptionHolder from "../../utils/descriptionHolder";
+import { selectLight, selectVisible, selectWeatherStatus } from "../../redux/";
 
 function Suggestions({ light, visible, toggleVisible, weatherStatus }) {
   useEffect(() => {
@@ -49,10 +51,10 @@ function Suggestions({ light, visible, toggleVisible, weatherStatus }) {
 }
 
 //Calling the state from the reducer
-const mapStateToProps = ({ weather: { light, visible, weatherStatus } }) => ({
-  light,
-  visible,
-  weatherStatus,
+const mapStateToProps = createStructuredSelector({
+  light: selectLight,
+  visible: selectVisible,
+  weatherStatus: selectWeatherStatus,
 });
 
 //Calling the methods from the reducer

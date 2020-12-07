@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { selectNotifiedItem } from "../../redux/";
+import { createStructuredSelector } from "reselect";
 
 const Notifications = ({ notifiedItem }) => (
   <>
@@ -21,8 +23,8 @@ const Notifications = ({ notifiedItem }) => (
 );
 
 //Calling the state from the reducer
-const mapStateToProps = ({ activities: { notifiedItem } }) => ({
-  notifiedItem,
+const mapStateToProps = createStructuredSelector({
+  notifiedItem: selectNotifiedItem,
 });
 
 export default connect(mapStateToProps)(Notifications);

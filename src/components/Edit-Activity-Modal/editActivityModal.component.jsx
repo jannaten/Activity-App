@@ -3,7 +3,11 @@ import ButtonStyle from "../styles";
 import { connect } from "react-redux";
 import Modal from "../../utils/setModal";
 import { FormInput, CustomButton } from "..";
+import { selectShowModal } from "../../redux";
+import { createStructuredSelector } from "reselect";
+import { selectSetValidTime, selectSetCompleted } from "../../redux";
 import { handleChange, handleUpdate, toggleModal } from "../../redux";
+import { selectSetId, selectTimeSet, selectSetName } from "../../redux";
 
 const EditActivityModal = ({
   setId,
@@ -75,22 +79,13 @@ const EditActivityModal = ({
 );
 
 //Calling the state from the reducer
-const mapStateToProps = ({
-  activities: {
-    setId,
-    timeSet,
-    setName,
-    showModal,
-    setValidTime,
-    setCompleted,
-  },
-}) => ({
-  setId,
-  timeSet,
-  setName,
-  showModal,
-  setValidTime,
-  setCompleted,
+const mapStateToProps = createStructuredSelector({
+  setId: selectSetId,
+  timeSet: selectTimeSet,
+  setName: selectSetName,
+  showModal: selectShowModal,
+  setValidTime: selectSetValidTime,
+  setCompleted: selectSetCompleted,
 });
 
 //Calling the methods from the reducer

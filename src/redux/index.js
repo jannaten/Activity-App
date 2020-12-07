@@ -24,3 +24,27 @@ export {
   getWeatherData,
   handleWeatherChange,
 } from "./weather/weather.action";
+
+export {
+  selectSetId,
+  selectTimeSet,
+  selectSetName,
+  selectShowModal,
+  selectActivities,
+  selectSetValidTime,
+  selectNotifiedItem,
+  selectSetCompleted,
+  selectActivitiesActive,
+  selectActivitiesNonActive,
+} from "./activities/activities.select";
+export {
+  selectLight,
+  selectVisible,
+  selectAPI_KEY,
+  selectIsPending,
+  selectDefaultCity,
+  selectWeatherStatus,
+  selectGivenCityName,
+  selectWeatherReport,
+  selectBasicWeatherData,
+} from "./weather/weather.select";

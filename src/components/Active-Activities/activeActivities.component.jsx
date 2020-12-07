@@ -2,6 +2,8 @@ import React from "react";
 import { CustomButton } from "../";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import { selectActivitiesActive } from "../../redux/";
 import { sortActivities, setArchriveActivities } from "../../redux/";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -85,8 +87,8 @@ const ActiveActivities = ({
 );
 
 //Calling the state from the reducer
-const mapStateToProps = ({ activities: { activitiesActive } }) => ({
-  activitiesActive,
+const mapStateToProps = createStructuredSelector({
+  activitiesActive: selectActivitiesActive,
 });
 
 //Calling the methods from the reducer
