@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Activity-App/static/css/main.cfed71df.chunk.css",
-    "main.js": "/Activity-App/static/js/main.fedab611.chunk.js",
-    "main.js.map": "/Activity-App/static/js/main.fedab611.chunk.js.map",
+    "main.css": "/Activity-App/static/css/main.ad370dcc.chunk.css",
+    "main.js": "/Activity-App/static/js/main.28a82432.chunk.js",
+    "main.js.map": "/Activity-App/static/js/main.28a82432.chunk.js.map",
     "runtime-main.js": "/Activity-App/static/js/runtime-main.375469d0.js",
     "runtime-main.js.map": "/Activity-App/static/js/runtime-main.375469d0.js.map",
-    "static/js/2.3504ed8f.chunk.js": "/Activity-App/static/js/2.3504ed8f.chunk.js",
-    "static/js/2.3504ed8f.chunk.js.map": "/Activity-App/static/js/2.3504ed8f.chunk.js.map",
+    "static/js/2.2c0fadef.chunk.js": "/Activity-App/static/js/2.2c0fadef.chunk.js",
+    "static/js/2.2c0fadef.chunk.js.map": "/Activity-App/static/js/2.2c0fadef.chunk.js.map",
     "index.html": "/Activity-App/index.html",
-    "precache-manifest.8944046a4cbb7845cebea8c88bbfa2d8.js": "/Activity-App/precache-manifest.8944046a4cbb7845cebea8c88bbfa2d8.js",
+    "precache-manifest.4da09367f06b085db2ee451e4e1e7b0b.js": "/Activity-App/precache-manifest.4da09367f06b085db2ee451e4e1e7b0b.js",
     "service-worker.js": "/Activity-App/service-worker.js",
-    "static/css/main.cfed71df.chunk.css.map": "/Activity-App/static/css/main.cfed71df.chunk.css.map",
-    "static/js/2.3504ed8f.chunk.js.LICENSE.txt": "/Activity-App/static/js/2.3504ed8f.chunk.js.LICENSE.txt"
+    "static/css/main.ad370dcc.chunk.css.map": "/Activity-App/static/css/main.ad370dcc.chunk.css.map",
+    "static/js/2.2c0fadef.chunk.js.LICENSE.txt": "/Activity-App/static/js/2.2c0fadef.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.375469d0.js",
-    "static/js/2.3504ed8f.chunk.js",
-    "static/css/main.cfed71df.chunk.css",
-    "static/js/main.fedab611.chunk.js"
+    "static/js/2.2c0fadef.chunk.js",
+    "static/css/main.ad370dcc.chunk.css",
+    "static/js/main.28a82432.chunk.js"
   ]
 }
