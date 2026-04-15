@@ -1,68 +1,226 @@
-aaaaThis project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ⚡ Activity App
 
-## Available Scripts
+> A modern, real-time daily activity tracker — schedule tasks, watch live countdowns, get weather-based suggestions, and visualise your productivity.
 
-In the project directory, you can run:
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-4f46e5?style=for-the-badge)](https://jannaten.github.io/Activity-App)
+[![React](https://img.shields.io/badge/React-19.1-61dafb?style=flat-square&logo=react&logoColor=white)](https://react.dev)
+[![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-2.6-764abc?style=flat-square&logo=redux&logoColor=white)](https://redux-toolkit.js.org)
+[![Vite](https://img.shields.io/badge/Vite-6.x-646cff?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22c55e?style=flat-square)](LICENSE)
 
-### `npm start`
+---
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## What is this project?
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Activity App is a **personal productivity tracker** built as a portfolio-quality React application. You create daily activities with a scheduled time, and the app counts down in real time, notifies you when a task is due, and gives you weather-aware suggestions on what to do based on current conditions in your city.
 
-### `npm test`
+It started as a 6-year-old legacy React 17 / CRA / vanilla Redux project and was fully modernised to React 19, Vite, Redux Toolkit, and React Hook Form — with five new features added on top.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Features
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Feature | Description |
+|---|---|
+| 📋 **Activity Management** | Create, edit, delete, and drag-and-drop to reorder activities |
+| ⏱️ **Live Countdown** | Per-minute countdown with animated progress bars |
+| 🔴 **Overdue Detection** | Activities turn red and show "X minutes overdue" automatically |
+| 🌤️ **Weather Widget** | Live weather from OpenWeatherMap with city search |
+| 💡 **Smart Suggestions** | Weather-aware activity recommendations (clear sky → go for a run, etc.) |
+| 🔔 **Notifications** | Real-time panel alerts when a scheduled activity starts |
+| 🔍 **Search & Sort** | Debounced live search + sort by name, time, or status |
+| 📊 **Statistics Dashboard** | Pie chart, bar chart, and 7-day trend line via Recharts |
+| 🌙 **Dark Mode** | System-aware dark/light mode, persisted across sessions |
+| ↩️ **Undo Actions** | Auto-dismissing undo toast on every delete, archive, or update |
+| 🗄️ **Session Persistence** | Redux Persist keeps data alive across page refreshes |
+| 📱 **Responsive Design** | Mobile-first layout with accessible hamburger navigation |
+| ♿ **Accessible** | ARIA labels, live regions, focus management, keyboard navigation |
+| 💨 **Skeleton Loading** | Shimmer placeholder states during async data fetching |
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🛠️ Tech Stack
 
-### `npm run eject`
+| Layer | Technology | Version |
+|---|---|---|
+| UI Framework | [React](https://react.dev) | 19.1 |
+| Build Tool | [Vite](https://vitejs.dev) | 6.x |
+| State Management | [Redux Toolkit](https://redux-toolkit.js.org) | 2.6 |
+| Routing | [React Router](https://reactrouter.com) | 7.x |
+| Form Validation | [React Hook Form](https://react-hook-form.com) | 7.x |
+| Drag & Drop | [@hello-pangea/dnd](https://github.com/hello-pangea/dnd) | 18.x |
+| Charts | [Recharts](https://recharts.org) | 2.x |
+| HTTP Client | [Axios](https://axios-http.com) | 1.x |
+| Persistence | [redux-persist](https://github.com/rt2zz/redux-persist) | 6.x |
+| Styling | SCSS Modules + CSS Custom Properties | — |
+| Testing | [Vitest](https://vitest.dev) + Testing Library | 3.x |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚀 Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- **Node.js** 18+
+- A free [OpenWeatherMap API key](https://openweathermap.org/api) (takes ~1 minute to get)
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# 1. Clone the repository
+git clone https://github.com/jannaten/Activity-App.git
+cd Activity-App
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# 2. Install dependencies
+npm install
 
-### Code Splitting
+# 3. Set up environment variables
+cp .env.example .env
+# Open .env and paste your OpenWeatherMap API key
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Environment Variables
 
-### Analyzing the Bundle Size
+Create a `.env` file in the project root (never commit this):
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```env
+VITE_OPENWEATHER_API_KEY=your_openweathermap_api_key_here
+VITE_DEFAULT_CITY=London
+```
 
-### Making a Progressive Web App
+### Running Locally
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```bash
+npm run dev       # starts dev server at http://localhost:5173
+npm run build     # production build → dist/
+npm run preview   # preview the production build locally
+npm test          # run the test suite
+npm run deploy    # build + deploy to GitHub Pages
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## 📁 Project Structure
 
-### Deployment
+```
+Activity-App/
+├── index.html                        # Vite entry point
+├── vite.config.js                    # Vite + Vitest config
+├── .env.example                      # Environment variable template
+│
+└── src/
+    ├── app/
+    │   └── store.js                  # Redux store + redux-persist config
+    │
+    ├── features/
+    │   ├── activities/
+    │   │   ├── activitiesSlice.js    # RTK slice — all activity reducers & actions
+    │   │   └── activitiesSelectors.js# Memoized selectors (search, sort, stats)
+    │   ├── weather/
+    │   │   ├── weatherSlice.js       # Async thunk for OpenWeatherMap API
+    │   │   └── weatherSelectors.js
+    │   └── theme/
+    │       └── themeSlice.js         # Dark / light mode with OS preference
+    │
+    ├── screens/
+    │   ├── Dashboard/                # Main view — active tasks, weather, archive
+    │   ├── CreateActivity/           # Form with React Hook Form validation
+    │   ├── CheckActivities/          # Full table with search, sort, drag-and-drop
+    │   └── Statistics/               # Recharts visualisation dashboard
+    │
+    ├── components/
+    │   ├── ActiveActivities/         # Drag-and-drop countdown cards
+    │   ├── ArchivedActivities/       # Completed tasks list
+    │   ├── Button/                   # Reusable button (variants + sizes)
+    │   ├── EditActivityModal/        # Accessible modal with React Hook Form
+    │   ├── ErrorBoundary/            # Class component error boundary
+    │   ├── Header/                   # Sticky nav with dark mode toggle
+    │   ├── Notifications/            # ARIA live region for due alerts
+    │   ├── SkeletonLoader/           # Animated shimmer placeholder
+    │   ├── UndoToast/                # Timed undo action toast
+    │   ├── WeatherSuggestions/       # Weather-based activity tips
+    │   └── WeatherWidget/            # Current weather + city search
+    │
+    ├── hooks/
+    │   ├── useActivityTimer.js       # setInterval with proper cleanup
+    │   ├── useDebounce.js            # Debounce hook for search input
+    │   └── useTheme.js               # Reads/writes data-theme on <html>
+    │
+    ├── styles/
+    │   └── global.scss               # CSS custom properties, reset, dark theme
+    │
+    ├── App.jsx                       # Routes (lazy-loaded) + ErrorBoundary
+    └── main.jsx                      # React 19 createRoot entry point
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+---
 
-### `npm run build` fails to minify
+## 🔄 Data Flow
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+User Action (click / form submit)
+        │
+        ▼
+React Component (useDispatch)
+        │
+        ├── Sync action ──▶ RTK slice reducer (Immer draft) ──▶ New Redux state
+        │                                                              │
+        └── Async thunk ──▶ axios → OpenWeatherMap API                │
+                               └── fulfilled / rejected action ───────┘
+                                                                       │
+                                                              react-redux useSelector
+                                                                       │
+                                                              Component re-renders
+                                                                       │
+                                                           redux-persist → sessionStorage
+```
+
+---
+
+## 📸 Screenshots
+
+| Dashboard (Light) | Dashboard (Dark) | Statistics |
+|---|---|---|
+| ![Dashboard Light](docs/dashboard-light.png) | ![Dashboard Dark](docs/dashboard-dark.png) | ![Statistics](docs/statistics.png) |
+
+| All Activities | Add Activity |
+|---|---|
+| ![All Activities](docs/check.png) | ![Add Activity](docs/create.png) |
+
+> Screenshots live in the `docs/` folder. Run the app and take your own to replace the placeholders.
+
+---
+
+## 🧪 Testing
+
+```bash
+npm test           # run all tests (Vitest)
+npm run test:ui    # open Vitest browser UI
+npm run coverage   # generate coverage report
+```
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feat/your-feature`
+3. Commit using [Conventional Commits](https://www.conventionalcommits.org/): `feat:`, `fix:`, `chore:`
+4. Push and open a Pull Request
+
+---
+
+## 👤 Author
+
+**Jannaten Nayem**
+- GitHub: [@jannaten](https://github.com/jannaten)
+
+---
+
+## 📄 License
+
+Distributed under the MIT License.
+
+---
+
+<p align="center">Built with React 19 · Redux Toolkit · Vite · Recharts</p>

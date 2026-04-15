@@ -1,0 +1,38 @@
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.title { margin-bottom: 1.5rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px 280px;
+  grid-template-areas: 'main side weather';
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.colMain    { grid-area: main; }
+.colSide    { grid-area: side; display: flex; flex-direction: column; gap: 1rem; }
+.colWeather { grid-area: weather; }
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'main weather'
+      'side side';
+  }
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'main'
+      'side'
+      'weather';
+  }
+}

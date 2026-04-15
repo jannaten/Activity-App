@@ -1,0 +1,65 @@
+.widget {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  h2 { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+}
+
+.error {
+  color: var(--danger);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: var(--radius-sm);
+}
+
+.data { display: flex; flex-direction: column; gap: 1rem; }
+
+.main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.city { font-size: 1rem; font-weight: 700; display: block; }
+.temp { font-size: 1.8rem; font-weight: 700; color: var(--primary); line-height: 1; }
+.desc { font-size: 0.85rem; color: var(--text-muted); text-transform: capitalize; margin-top: 0.2rem; }
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+
+  > div {
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 0.75rem;
+  }
+
+  dt { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  dd { font-size: 0.95rem; font-weight: 600; margin: 0; }
+}
+
+.form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: stretch;
+}
+
+.input {
+  flex: 1;
+  min-width: 0; /* prevents flex child from overflowing */
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.9rem;
+
+  &:focus { outline: 2px solid var(--primary); outline-offset: 1px; }
+}

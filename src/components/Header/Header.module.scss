@@ -1,0 +1,109 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: 60px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  gap: 1rem;
+}
+
+.brand {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &:hover { text-decoration: none; opacity: 0.85; }
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navLink {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+
+  &:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    text-decoration: none;
+  }
+}
+
+.active {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.themeToggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.15s;
+
+  &:hover { background: var(--surface-2); }
+  &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.6rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+}
+
+@media (max-width: 680px) {
+  .hamburger { display: block; }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1rem;
+
+    &.open { display: block; }
+
+    ul {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .navLink { width: 100%; padding: 0.6rem 0.75rem; }
+  }
+}
