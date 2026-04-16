@@ -12,8 +12,8 @@ test.describe('Activity creation and dashboard flow', () => {
   });
 
   test('dashboard loads and shows navigation links', async ({ page }) => {
-    // Header brand is visible
-    await expect(page.getByText('activity')).toBeVisible();
+    // Header brand is visible — use exact role match to avoid matching "Add Activity" nav link
+    await expect(page.getByRole('link', { name: 'activity', exact: true })).toBeVisible();
 
     // All four nav links are present
     await expect(page.getByRole('link', { name: 'Dashboard' })).toBeVisible();
