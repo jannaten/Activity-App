@@ -2,7 +2,7 @@
 
 > A modern, real-time daily activity tracker — schedule tasks, watch live countdowns, get weather-based suggestions, and visualise your productivity.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-4f46e5?style=for-the-badge)](https://jannaten.github.io/Activity-App)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20App-4f46e5?style=for-the-badge)](https://activity-app-git-master-jannaten-nayems-projects.vercel.app)
 [![React](https://img.shields.io/badge/React-19.1-61dafb?style=flat-square&logo=react&logoColor=white)](https://react.dev)
 [![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-2.6-764abc?style=flat-square&logo=redux&logoColor=white)](https://redux-toolkit.js.org)
 [![Vite](https://img.shields.io/badge/Vite-6.x-646cff?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev)
@@ -98,7 +98,6 @@ VITE_DEFAULT_CITY=London
 npm run dev       # dev server at http://localhost:5173
 npm run build     # production build → dist/
 npm run preview   # preview the production build locally
-npm run deploy    # build + deploy to GitHub Pages
 ```
 
 ---
@@ -275,22 +274,30 @@ npm run release:major    # major release (e.g. 2.0.0 → 3.0.0)
 
 ## 🚦 CI/CD Pipeline
 
-GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs on every push and pull request to `main`:
+GitHub Actions ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) runs on every push and pull request to `master`:
 
 ```
-quality → test → build → e2e
+quality → test → build → e2e → deploy (master only)
 ```
 
-| Job         | What it does                                          |
-| ----------- | ----------------------------------------------------- |
-| **quality** | `format:check` + `lint` — fails fast on any issue     |
-| **test**    | `test:ci` — unit tests + coverage report              |
-| **build**   | `vite build` — verifies the production build succeeds |
-| **e2e**     | Playwright tests against the Vite dev server          |
+| Job         | What it does                                                |
+| ----------- | ----------------------------------------------------------- |
+| **quality** | `format:check` + `lint` — fails fast on any issue           |
+| **test**    | `test:ci` — unit tests + coverage report                    |
+| **build**   | `vite build` — verifies the production build succeeds       |
+| **e2e**     | Playwright tests against the Vite dev server                |
+| **deploy**  | Deploys to Vercel via CLI — only runs on pushes to `master` |
 
-Set the following repository secrets for CI builds:
+Deployment only happens after all four prior jobs pass. Pull requests run quality/test/build/e2e but never deploy.
 
-- `VITE_OPENWEATHER_API_KEY` — your OpenWeatherMap key
+Set the following repository secrets (Settings → Secrets and variables → Actions):
+
+| Secret                     | Description                                                 |
+| -------------------------- | ----------------------------------------------------------- |
+| `VERCEL_TOKEN`             | API token from vercel.com → Account Settings → Tokens       |
+| `VERCEL_ORG_ID`            | `orgId` from `.vercel/project.json` after `vercel link`     |
+| `VERCEL_PROJECT_ID`        | `projectId` from `.vercel/project.json` after `vercel link` |
+| `VITE_OPENWEATHER_API_KEY` | Your OpenWeatherMap API key                                 |
 
 ### TypeScript gap
 
