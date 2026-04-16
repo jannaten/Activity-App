@@ -15,7 +15,9 @@ export default function ArchivedActivities() {
         <ul className={styles.list}>
           {archived.map((ac) => (
             <li key={ac.id} className={styles.item}>
-              <span className={styles.check} aria-hidden="true">✓</span>
+              <span className={styles.check} aria-hidden="true">
+                ✓
+              </span>
               <span className={styles.name}>{ac.name}</span>
               <span className={styles.badge}>Done</span>
             </li>

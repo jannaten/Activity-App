@@ -1,9 +1,19 @@
 import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  PieChart, Pie, Cell, Tooltip, Legend,
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer,
-  LineChart, Line,
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+  LineChart,
+  Line,
 } from 'recharts';
 import {
   selectAllActivities,
@@ -59,8 +69,11 @@ export default function Statistics() {
   }, [stats]);
 
   const rateEmoji =
-    stats.completionRate >= 75 ? '🔥 On fire!' :
-    stats.completionRate >= 50 ? '👍 Solid' : '💪 Keep going';
+    stats.completionRate >= 75
+      ? '🔥 On fire!'
+      : stats.completionRate >= 50
+        ? '👍 Solid'
+        : '💪 Keep going';
 
   const tooltipStyle = {
     backgroundColor: 'var(--surface)',
@@ -125,7 +138,12 @@ export default function Statistics() {
                 <XAxis dataKey="name" tick={{ fill: 'var(--text-muted)', fontSize: 11 }} />
                 <YAxis tick={{ fill: 'var(--text-muted)', fontSize: 11 }} allowDecimals={false} />
                 <Tooltip contentStyle={tooltipStyle} />
-                <Bar dataKey="count" fill="var(--primary)" radius={[4, 4, 0, 0]} name="Activities" />
+                <Bar
+                  dataKey="count"
+                  fill="var(--primary)"
+                  radius={[4, 4, 0, 0]}
+                  name="Activities"
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>

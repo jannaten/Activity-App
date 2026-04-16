@@ -15,8 +15,8 @@ const currentSeconds = () => {
 
 const initialState = {
   activities: [
-    { id: uuid(), name: 'Running',  completed: false, timeSet: 180, originalTimeSet: 180 },
-    { id: uuid(), name: 'Cooking',  completed: true,  timeSet: NaN, originalTimeSet: NaN },
+    { id: uuid(), name: 'Running', completed: false, timeSet: 180, originalTimeSet: 180 },
+    { id: uuid(), name: 'Cooking', completed: true, timeSet: NaN, originalTimeSet: NaN },
     { id: uuid(), name: 'Sleeping', completed: false, timeSet: 300, originalTimeSet: 300 },
   ],
   activitiesActive: [],

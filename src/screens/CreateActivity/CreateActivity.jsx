@@ -50,7 +50,7 @@ export default function CreateActivity() {
               type="text"
               placeholder="e.g. Morning run"
               aria-describedby={errors.name ? 'name-error' : undefined}
-              aria-invalid={!!errors.name}
+              aria-invalid={Boolean(errors.name)}
               {...register('name', {
                 required: 'Activity name is required',
                 minLength: { value: 2, message: 'Name must be at least 2 characters' },
@@ -71,7 +71,7 @@ export default function CreateActivity() {
               id="timeStr"
               type="time"
               aria-describedby="time-hint"
-              aria-invalid={!!errors.timeStr}
+              aria-invalid={Boolean(errors.timeStr)}
               {...register('timeStr', {
                 required: 'Please set a time',
                 validate: (v) => {

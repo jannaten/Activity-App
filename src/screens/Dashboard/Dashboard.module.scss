@@ -4,7 +4,9 @@
   padding: 1.5rem;
 }
 
-.title { margin-bottom: 1.5rem; }
+.title {
+  margin-bottom: 1.5rem;
+}
 
 .grid {
   display: grid;
@@ -14,9 +16,18 @@
   align-items: start;
 }
 
-.colMain    { grid-area: main; }
-.colSide    { grid-area: side; display: flex; flex-direction: column; gap: 1rem; }
-.colWeather { grid-area: weather; }
+.colMain {
+  grid-area: main;
+}
+.colSide {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.colWeather {
+  grid-area: weather;
+}
 
 @media (max-width: 1024px) {
   .grid {

@@ -3,7 +3,9 @@
   margin: 0 auto;
   padding: 1.5rem;
 
-  h1 { margin-bottom: 1.5rem; }
+  h1 {
+    margin-bottom: 1.5rem;
+  }
 }
 
 .statsRow {
@@ -66,7 +68,9 @@
   }
 }
 
-.wide { grid-column: 1 / -1; }
+.wide {
+  grid-column: 1 / -1;
+}
 
 .empty {
   text-align: center;
@@ -78,6 +82,10 @@
 }
 
 @media (max-width: 680px) {
-  .chartsGrid { grid-template-columns: 1fr; }
-  .wide { grid-column: 1; }
+  .chartsGrid {
+    grid-template-columns: 1fr;
+  }
+  .wide {
+    grid-column: 1;
+  }
 }

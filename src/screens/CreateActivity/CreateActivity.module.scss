@@ -15,7 +15,9 @@
   max-width: 480px;
   box-shadow: var(--shadow);
 
-  h1 { margin-bottom: 0.4rem; }
+  h1 {
+    margin-bottom: 0.4rem;
+  }
 }
 
 .subtitle {
@@ -35,7 +37,11 @@
   font-weight: 500;
 }
 
-.form { display: flex; flex-direction: column; gap: 1.5rem; }
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
 
 .field {
   display: flex;
@@ -57,11 +63,22 @@
     font-size: 1rem;
     transition: border-color 0.15s;
 
-    &:focus { outline: none; border-color: var(--primary); }
-    &[aria-invalid='true'] { border-color: var(--danger); }
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    &[aria-invalid='true'] {
+      border-color: var(--danger);
+    }
   }
 }
 
-.hint { font-size: 0.78rem; color: var(--text-muted); }
+.hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
 
-.error { font-size: 0.8rem; color: var(--danger); }
+.error {
+  font-size: 0.8rem;
+  color: var(--danger);
+}

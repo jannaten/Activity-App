@@ -19,7 +19,9 @@
   max-width: 440px;
   box-shadow: var(--shadow-lg);
 
-  &:focus { outline: none; }
+  &:focus {
+    outline: none;
+  }
 }
 
 .modalHeader {
@@ -38,8 +40,14 @@
   padding: 0.25rem;
   border-radius: var(--radius-sm);
 
-  &:hover { color: var(--text); background: var(--border); }
-  &:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+  &:hover {
+    color: var(--text);
+    background: var(--border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
 }
 
 .field {
@@ -48,7 +56,11 @@
   gap: 0.35rem;
   margin-bottom: 1.25rem;
 
-  label { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+  label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
 
   input {
     padding: 0.55rem 0.85rem;
@@ -59,8 +71,13 @@
     font-size: 0.95rem;
     transition: border-color 0.15s;
 
-    &:focus { outline: none; border-color: var(--primary); }
-    &[aria-invalid='true'] { border-color: var(--danger); }
+    &:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    &[aria-invalid='true'] {
+      border-color: var(--danger);
+    }
   }
 }
 

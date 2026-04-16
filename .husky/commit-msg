@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# Enforce Conventional Commits format (feat, fix, chore, etc.)
+npx --no -- commitlint --edit "$1"

@@ -20,7 +20,9 @@ export default function EditActivityModal({ activity, onClose }) {
     const el = dialogRef.current;
     if (el) el.focus();
 
-    const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const handleKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
@@ -57,7 +59,7 @@ export default function EditActivityModal({ activity, onClose }) {
             <input
               id="edit-name"
               type="text"
-              aria-invalid={!!errors.name}
+              aria-invalid={Boolean(errors.name)}
               aria-describedby={errors.name ? 'edit-name-error' : undefined}
               {...register('name', {
                 required: 'Name is required',
@@ -78,7 +80,7 @@ export default function EditActivityModal({ activity, onClose }) {
               <input
                 id="edit-time"
                 type="time"
-                aria-invalid={!!errors.timeStr}
+                aria-invalid={Boolean(errors.timeStr)}
                 aria-describedby={errors.timeStr ? 'edit-time-error' : undefined}
                 {...register('timeStr', {
                   validate: (v) => {

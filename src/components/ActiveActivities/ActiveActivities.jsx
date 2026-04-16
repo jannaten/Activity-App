@@ -63,7 +63,11 @@ export default function ActiveActivities() {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         className={`${styles.item} ${snapshot.isDragging ? styles.dragging : ''} ${
-                          ac.timeSet <= 0 ? styles.overdue : isUrgent(ac.timeSet) ? styles.urgent : ''
+                          ac.timeSet <= 0
+                            ? styles.overdue
+                            : isUrgent(ac.timeSet)
+                              ? styles.urgent
+                              : ''
                         }`}
                         aria-grabbed={snapshot.isDragging}
                       >
@@ -86,9 +90,10 @@ export default function ActiveActivities() {
                           <div
                             className={`${styles.progressFill} ${ac.timeSet <= 0 ? styles.full : isUrgent(ac.timeSet) ? styles.urgentFill : ''}`}
                             style={{
-                              width: ac.timeSet <= 0
-                                ? '100%'
-                                : `${Math.min(100, Math.max(0, (1 - ac.timeSet / (ac.originalTimeSet || 300)) * 100))}%`,
+                              width:
+                                ac.timeSet <= 0
+                                  ? '100%'
+                                  : `${Math.min(100, Math.max(0, (1 - ac.timeSet / (ac.originalTimeSet || 300)) * 100))}%`,
                             }}
                           />
                         </div>

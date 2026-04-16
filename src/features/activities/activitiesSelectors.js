@@ -2,10 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 const selectActivitiesState = (state) => state.activities;
 
-export const selectAllActivities = createSelector(
-  selectActivitiesState,
-  (s) => s.activities
-);
+export const selectAllActivities = createSelector(selectActivitiesState, (s) => s.activities);
 
 export const selectActiveActivities = createSelector(
   selectActivitiesState,
@@ -17,20 +14,11 @@ export const selectArchivedActivities = createSelector(
   (s) => s.activitiesArchived
 );
 
-export const selectNotifiedItems = createSelector(
-  selectActivitiesState,
-  (s) => s.notifiedItems
-);
+export const selectNotifiedItems = createSelector(selectActivitiesState, (s) => s.notifiedItems);
 
-export const selectSearchQuery = createSelector(
-  selectActivitiesState,
-  (s) => s.searchQuery
-);
+export const selectSearchQuery = createSelector(selectActivitiesState, (s) => s.searchQuery);
 
-export const selectSortOrder = createSelector(
-  selectActivitiesState,
-  (s) => s.sortOrder
-);
+export const selectSortOrder = createSelector(selectActivitiesState, (s) => s.sortOrder);
 
 export const selectUndoAvailable = createSelector(
   selectActivitiesState,
@@ -48,7 +36,10 @@ export const selectFilteredActivities = createSelector(
     if (sortOrder === 'name-asc') result.sort((a, b) => a.name.localeCompare(b.name));
     if (sortOrder === 'name-desc') result.sort((a, b) => b.name.localeCompare(a.name));
     if (sortOrder === 'time-asc')
-      result.sort((a, b) => (isNaN(a.timeSet) ? Infinity : a.timeSet) - (isNaN(b.timeSet) ? Infinity : b.timeSet));
+      result.sort(
+        (a, b) =>
+          (isNaN(a.timeSet) ? Infinity : a.timeSet) - (isNaN(b.timeSet) ? Infinity : b.timeSet)
+      );
     if (sortOrder === 'status') result.sort((a, b) => Number(a.completed) - Number(b.completed));
     return result;
   }

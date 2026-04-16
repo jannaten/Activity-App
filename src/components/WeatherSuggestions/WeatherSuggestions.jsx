@@ -4,22 +4,30 @@ import { selectWeatherSummary, selectWeatherStatus } from '../../features/weathe
 import styles from './WeatherSuggestions.module.scss';
 
 const SUGGESTIONS = {
-  'clear sky': ['Go for a run 🏃', 'Try outdoor yoga 🧘', 'Take a long walk 🚶', 'Ride your bike 🚴'],
+  'clear sky': [
+    'Go for a run 🏃',
+    'Try outdoor yoga 🧘',
+    'Take a long walk 🚶',
+    'Ride your bike 🚴',
+  ],
   'few clouds': ['Perfect for a walk 🚶', 'Great for outdoor reading 📚', 'Light jog weather 🏃'],
   'scattered clouds': ['Good for a stroll 🚶', 'Outdoor coffee time ☕', 'Garden work 🌱'],
   'broken clouds': ['Indoor workout 💪', 'Catch up on reading 📖', 'Cook a new recipe 🍳'],
-  'shower rain': ['Home workout 🏋️', 'Learn something new 📚', 'Meditate 🧘', 'Clean and organise 🗂️'],
-  'rain': ['Stay cozy indoors 🏠', 'Watch a documentary 🎬', 'Journal writing ✍️'],
-  'thunderstorm': ['Stay safe indoors ⚡', 'Board games 🎲', 'Deep work session 💻'],
-  'snow': ['Build a snowman ☃️', 'Hot cocoa and a book ☕📖', 'Indoor stretching 🤸'],
-  'mist': ['Light indoor yoga 🧘', 'Home tidying 🧹', 'Plan your week 📅'],
+  'shower rain': [
+    'Home workout 🏋️',
+    'Learn something new 📚',
+    'Meditate 🧘',
+    'Clean and organise 🗂️',
+  ],
+  rain: ['Stay cozy indoors 🏠', 'Watch a documentary 🎬', 'Journal writing ✍️'],
+  thunderstorm: ['Stay safe indoors ⚡', 'Board games 🎲', 'Deep work session 💻'],
+  snow: ['Build a snowman ☃️', 'Hot cocoa and a book ☕📖', 'Indoor stretching 🤸'],
+  mist: ['Light indoor yoga 🧘', 'Home tidying 🧹', 'Plan your week 📅'],
 };
 
 function getSuggestions(description) {
   if (!description) return [];
-  const key = Object.keys(SUGGESTIONS).find((k) =>
-    description.toLowerCase().includes(k)
-  );
+  const key = Object.keys(SUGGESTIONS).find((k) => description.toLowerCase().includes(k));
   return key ? SUGGESTIONS[key] : ['Stay active today! 💪'];
 }
 
@@ -46,7 +54,9 @@ export default function WeatherSuggestions() {
       </div>
       <ul className={styles.list}>
         {suggestions.map((s, i) => (
-          <li key={i} className={styles.item}>{s}</li>
+          <li key={i} className={styles.item}>
+            {s}
+          </li>
         ))}
       </ul>
     </div>

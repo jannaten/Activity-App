@@ -4,12 +4,25 @@
   border-radius: var(--radius);
   padding: 1.25rem;
 
-  h2 { margin-bottom: 0.75rem; font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 }
 
-.empty { color: var(--text-muted); font-size: 0.9rem; }
+.empty {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
 
-.list { display: flex; flex-direction: column; gap: 0.4rem; }
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
 
 .item {
   display: flex;

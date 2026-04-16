@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+coverage
+public
+playwright-report
+test-results
+*.lock
+package-lock.json
+CHANGELOG.md

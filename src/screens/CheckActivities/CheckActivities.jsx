@@ -52,9 +52,13 @@ export default function CheckActivities() {
   return (
     <div className={styles.page}>
       <div className={styles.toolbar}>
-        <h1>All Activities <span className={styles.count}>({activities.length})</span></h1>
+        <h1>
+          All Activities <span className={styles.count}>({activities.length})</span>
+        </h1>
         <div className={styles.controls}>
-          <label htmlFor="search" className="sr-only">Search activities</label>
+          <label htmlFor="search" className="sr-only">
+            Search activities
+          </label>
           <input
             id="search"
             type="search"
@@ -63,7 +67,9 @@ export default function CheckActivities() {
             onChange={(e) => setLocalSearch(e.target.value)}
             className={styles.searchInput}
           />
-          <label htmlFor="sort" className="sr-only">Sort by</label>
+          <label htmlFor="sort" className="sr-only">
+            Sort by
+          </label>
           <select
             id="sort"
             value={sortOrder}
@@ -81,11 +87,7 @@ export default function CheckActivities() {
 
       {activities.length === 0 ? (
         <div className={styles.empty}>
-          <p>
-            {localSearch
-              ? `No activities match "${localSearch}"`
-              : 'No activities yet.'}
-          </p>
+          <p>{localSearch ? `No activities match "${localSearch}"` : 'No activities yet.'}</p>
           {!localSearch && (
             <Link to="/create">
               <Button>Add Activity</Button>
@@ -116,9 +118,7 @@ export default function CheckActivities() {
                             {...provided.dragHandleProps}
                             className={`${snapshot.isDragging ? styles.dragging : ''}`}
                           >
-                            <td className={ac.completed ? styles.strikethrough : ''}>
-                              {ac.name}
-                            </td>
+                            <td className={ac.completed ? styles.strikethrough : ''}>{ac.name}</td>
                             <td>
                               <span
                                 className={`${styles.badge} ${

@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ErrorBoundary > matches snapshot in error state 1`] = `
+<div
+  class="_container_695b5b"
+  role="alert"
+>
+  <div
+    class="_icon_695b5b"
+  >
+    ⚠️
+  </div>
+  <h2>
+    Something went wrong
+  </h2>
+  <p>
+    Snapshot error
+  </p>
+  <button
+    class="_retryBtn_695b5b"
+  >
+    Try again
+  </button>
+</div>
+`;

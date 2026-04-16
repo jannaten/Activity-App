@@ -4,7 +4,13 @@
   border-radius: var(--radius);
   padding: 1.25rem;
 
-  h2 { margin-bottom: 0.75rem; font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
 }
 
 .weather {
@@ -29,7 +35,11 @@
   font-weight: 500;
 }
 
-.list { display: flex; flex-direction: column; gap: 0.35rem; }
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
 
 .item {
   font-size: 0.88rem;

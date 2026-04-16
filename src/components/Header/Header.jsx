@@ -30,19 +30,14 @@ export default function Header() {
         <strong>activity</strong>
       </NavLink>
 
-      <nav
-        className={`${styles.nav} ${menuOpen ? styles.open : ''}`}
-        aria-label="Main navigation"
-      >
-        <ul role="list">
+      <nav className={`${styles.nav} ${menuOpen ? styles.open : ''}`} aria-label="Main navigation">
+        <ul>
           {NAV_LINKS.map(({ to, label }) => (
             <li key={to}>
               <NavLink
                 to={to}
                 end={to === '/'}
-                className={({ isActive }) =>
-                  `${styles.navLink} ${isActive ? styles.active : ''}`
-                }
+                className={({ isActive }) => `${styles.navLink} ${isActive ? styles.active : ''}`}
                 onClick={closeMenu}
               >
                 {label}

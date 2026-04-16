@@ -4,7 +4,9 @@
   border-radius: var(--radius);
   padding: 1.25rem;
 
-  h2 { margin-bottom: 1rem; }
+  h2 {
+    margin-bottom: 1rem;
+  }
 }
 
 .empty {
@@ -30,10 +32,16 @@
   flex-direction: column;
   gap: 0.6rem;
   cursor: grab;
-  transition: box-shadow 0.15s, border-color 0.15s;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
 
-  &:hover { border-color: var(--primary); }
-  &:active { cursor: grabbing; }
+  &:hover {
+    border-color: var(--primary);
+  }
+  &:active {
+    cursor: grabbing;
+  }
 }
 
 .dragging {
@@ -65,12 +73,22 @@
   white-space: nowrap;
 }
 
-.late { color: var(--danger); font-weight: 600; }
+.late {
+  color: var(--danger);
+  font-weight: 600;
+}
 
 /* Last 60 seconds — amber pulsing border */
 @keyframes urgentPulse {
-  0%, 100% { border-color: var(--warning); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-  50%       { border-color: var(--warning); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15); }
+  0%,
+  100% {
+    border-color: var(--warning);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+  50% {
+    border-color: var(--warning);
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+  }
 }
 
 .urgent {
@@ -98,5 +116,10 @@
   transition: width 0.9s linear;
 }
 
-.urgentFill { background: var(--warning); }
-.full { background: var(--danger); width: 100% !important; }
+.urgentFill {
+  background: var(--warning);
+}
+.full {
+  background: var(--danger);
+  width: 100% !important;
+}
