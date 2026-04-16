@@ -15,9 +15,7 @@ export default defineConfig(() => ({
       template: 'treemap',
     }),
   ],
-  // Use /Activity-App/ base only when deploying to GitHub Pages (DEPLOY=true).
-  // Local dev and local preview both use '/' so http://localhost:xxxx/ works directly.
-  base: process.env.DEPLOY === 'true' ? '/Activity-App/' : '/',
+  base: '/',
 
   test: {
     globals: true,

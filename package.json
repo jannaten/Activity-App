@@ -4,7 +4,6 @@
   "private": true,
   "type": "module",
   "author": "Jannaten Nayem",
-  "homepage": "https://jannaten.github.io/Activity-App",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -23,9 +22,7 @@
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
-    "prepare": "husky",
-    "predeploy": "DEPLOY=true vite build",
-    "deploy": "gh-pages -d dist"
+    "prepare": "husky"
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
@@ -68,7 +65,6 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "gh-pages": "^6.3.0",
     "globals": "^17.5.0",
     "husky": "^9.1.7",
     "jest-axe": "^10.0.0",

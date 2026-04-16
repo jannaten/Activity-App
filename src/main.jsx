@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename={import.meta.env.PROD ? '/Activity-App' : '/'}>
+        <BrowserRouter>
           <App />
         </BrowserRouter>
       </PersistGate>
