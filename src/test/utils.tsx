@@ -25,13 +25,10 @@ const _typedStore = configureStore({ reducer: _reducers });
 export type TestStore = typeof _typedStore;
 
 /** Build a test-only Redux store (no redux-persist, synchronous). */
-export function createTestStore(
-   
-  preloadedState: Record<string, any> = {}
-): TestStore {
+export function createTestStore(preloadedState: Record<string, any> = {}): TestStore {
   // Cast configureStore as any to bypass overload resolution issues when
   // preloadedState is a loose Record — safe because TestStore is still the return type.
-   
+
   return (configureStore as any)({
     reducer: _reducers,
     preloadedState: Object.keys(preloadedState).length ? preloadedState : undefined,
@@ -39,7 +36,6 @@ export function createTestStore(
 }
 
 interface RenderWithProvidersOptions extends Omit<RenderOptions, 'queries'> {
-   
   preloadedState?: Record<string, any>;
   store?: TestStore;
   route?: string;
