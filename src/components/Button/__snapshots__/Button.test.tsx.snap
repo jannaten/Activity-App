@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > matches snapshot (primary/medium defaults) 1`] = `
+<button
+  class="_btn_ee73f7 _primary_ee73f7 _medium_ee73f7"
+  type="button"
+>
+  Save
+</button>
+`;

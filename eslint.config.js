@@ -1,4 +1,5 @@
 import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
@@ -8,6 +9,9 @@ import globals from 'globals';
 export default [
   // Base JS recommended rules
   js.configs.recommended,
+
+  // TypeScript recommended rules
+  ...tseslint.configs.recommended,
 
   // React flat config (includes JSX transform support)
   reactPlugin.configs.flat.recommended,
@@ -24,7 +28,7 @@ export default [
 
   // Project-wide settings
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
@@ -42,7 +46,7 @@ export default [
     },
     rules: {
       // React
-      'react/prop-types': 'warn',
+      'react/prop-types': 'off', // TypeScript handles prop validation
       'react/display-name': 'warn',
       'react/no-array-index-key': 'warn',
       'react/self-closing-comp': 'warn',
@@ -52,10 +56,14 @@ export default [
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
 
-      // General quality
+      // General quality — use TS-aware version instead of base no-unused-vars
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-debugger': 'error',
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       'prefer-const': 'error',
       'no-var': 'error',
       eqeqeq: ['error', 'always', { null: 'ignore' }],
@@ -65,7 +73,11 @@ export default [
 
   // Test file overrides
   {
-    files: ['**/*.test.{js,jsx}', '**/test/**/*.{js,jsx}', 'e2e/**/*.{js,jsx}'],
+    files: [
+      '**/*.test.{ts,tsx,js,jsx}',
+      '**/test/**/*.{ts,tsx,js,jsx}',
+      'e2e/**/*.{js,ts}',
+    ],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -83,7 +95,7 @@ export default [
     },
     rules: {
       'no-console': 'off',
-      'react/prop-types': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 
@@ -101,6 +113,7 @@ export default [
       'playwright-report/**',
       'test-results/**',
       '*.config.js',
+      '*.config.ts',
     ],
   },
 ];

@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "analyze": "vite build && open stats.html",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ci": "vitest run --coverage",
     "test:e2e": "playwright test",
@@ -16,8 +17,8 @@
     "test:e2e:headed": "playwright test --headed",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier --write \"src/**/*.{js,jsx,scss,css}\"",
-    "format:check": "prettier --check \"src/**/*.{js,jsx,scss,css}\"",
+    "format": "prettier --write \"src/**/*.{ts,tsx,scss,css}\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,scss,css}\"",
     "audit": "npm audit --audit-level=moderate",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
@@ -25,7 +26,7 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "src/**/*.{ts,tsx}": [
       "prettier --write",
       "eslint --fix"
     ],
@@ -58,7 +59,11 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.5.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.0",
     "@vitest/coverage-v8": "^3.2.4",
     "eslint": "^9.26.0",
     "eslint-config-prettier": "^10.1.8",

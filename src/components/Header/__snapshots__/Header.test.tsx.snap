@@ -1,0 +1,80 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header > matches snapshot 1`] = `
+<header
+  class="_header_d975ee"
+>
+  <a
+    aria-current="page"
+    class="_brand_d975ee active"
+    data-discover="true"
+    href="/"
+  >
+    <strong>
+      activity
+    </strong>
+  </a>
+  <nav
+    aria-label="Main navigation"
+    class="_nav_d975ee "
+  >
+    <ul>
+      <li>
+        <a
+          aria-current="page"
+          class="_navLink_d975ee _active_d975ee"
+          data-discover="true"
+          href="/"
+        >
+          Dashboard
+        </a>
+      </li>
+      <li>
+        <a
+          class="_navLink_d975ee "
+          data-discover="true"
+          href="/check"
+        >
+          All Activities
+        </a>
+      </li>
+      <li>
+        <a
+          class="_navLink_d975ee "
+          data-discover="true"
+          href="/create"
+        >
+          Add Activity
+        </a>
+      </li>
+      <li>
+        <a
+          class="_navLink_d975ee "
+          data-discover="true"
+          href="/stats"
+        >
+          Statistics
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    class="_actions_d975ee"
+  >
+    <button
+      aria-label="Switch to dark mode"
+      class="_themeToggle_d975ee"
+      title="Dark mode"
+    >
+      🌙
+    </button>
+    <button
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="_hamburger_d975ee"
+    >
+      ☰
+    </button>
+  </div>
+</header>
+`;
